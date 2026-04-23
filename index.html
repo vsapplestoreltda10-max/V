@@ -6,66 +6,62 @@
 
 <style>
 body {
-  font-family: Arial;
-  background: #fff;
-  color: #6a0dad;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Arial;
+  background: #ffffff;
+  color: #2d2d2d;
   padding: 20px;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 750px;
   margin: auto;
+}
+
+h1 {
   text-align: center;
+  color: #6a0dad;
 }
 
-h2 {
-  margin-bottom: 5px;
-}
-
-.sub {
+.empresa {
   font-size: 14px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.contrato {
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.assinatura {
+  margin-top: 40px;
+  border-top: 2px solid #000;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.box {
+  background: #f5f5f7;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 30px;
 }
 
 input, button {
   width: 100%;
   padding: 14px;
-  margin: 8px 0;
-  border-radius: 8px;
+  margin-top: 10px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 15px;
 }
 
 button {
   background: #6a0dad;
-  color: #fff;
+  color: white;
   font-weight: bold;
-  font-size: 16px;
-}
-
-.contrato {
-  text-align: left;
-  font-size: 15px;
-  height: 420px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-top: 10px;
-  line-height: 1.5;
-}
-
-.assinatura {
-  margin-top: 25px;
-  border-top: 2px solid #ccc;
-  padding-top: 15px;
-  font-size: 14px;
-}
-
-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
 }
 </style>
 </head>
@@ -74,78 +70,88 @@ label {
 
 <div class="container">
 
-<h2>📄 CONTRATO DE COMPRA E VENDA</h2>
-<p class="sub">Sistema de formalização digital</p>
+<h1>📄 CONTRATO DE COMPRA E VENDA</h1>
 
-<p style="text-align:left;"><b>Nome completo do titular</b></p>
-<input type="text" id="nome" placeholder="Digite seu nome completo">
+<div class="empresa">
+<b>VERSUS APPLE OFICIAL</b><br>
+CNPJ: 55.317.837/0001-50<br>
+WhatsApp: +55 11 94496-7694<br>
+Localização: São Paulo - SP<br>
+Instagram: @versusappleoficial
+</div>
 
 <div class="contrato">
 
-<b>VERSUS APPLE OFICIAL</b><br>
-CNPJ: 55.317.837/0001-50<br>
-Endereço: São Paulo/SP<br><br>
-
 <b>1. OBJETO DO CONTRATO</b><br>
-Aquisição de aparelho iPhone mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal sucessivo até a quitação total.<br><br>
+O presente contrato tem como objetivo formalizar a aquisição de aparelho eletrônico (iPhone) pelo CLIENTE junto à VERSUS APPLE OFICIAL, mediante pagamento realizado por meio de boleto bancário, incluindo entrada inicial obrigatória e parcelamento mensal até a quitação integral do valor total da compra.<br><br>
 
 <b>2. CONDIÇÕES DE PAGAMENTO</b><br>
-As parcelas serão emitidas mensalmente em nome do titular.<br><br>
+O CLIENTE declara estar ciente de que o pagamento será realizado em parcelas mensais, emitidas em seu nome, sendo de sua total responsabilidade a quitação de todas as parcelas dentro dos prazos estabelecidos. O não pagamento implicará nas penalidades descritas neste contrato.<br><br>
 
-<b>3. ENTREGA</b><br>
-Envio via SEDEX (3 a 4 dias úteis após entrada).<br><br>
+<b>3. LIBERAÇÃO DO PEDIDO</b><br>
+A liberação do pedido e início do processo de envio do produto ocorrerá somente após a confirmação do pagamento da entrada inicial.<br><br>
 
-<b>4. GARANTIA</b><br>
-6 meses loja + 12 meses fabricante.<br><br>
+<b>4. ENTREGA DO PRODUTO</b><br>
+O envio do produto será realizado por meio dos serviços dos Correios (SEDEX), com prazo estimado de entrega de 3 (três) a 4 (quatro) dias úteis, podendo variar conforme a localidade do CLIENTE.<br><br>
 
-<b>5. RESPONSABILIDADE</b><br>
-O cliente assume todas as obrigações financeiras.<br><br>
+<b>5. GARANTIA</b><br>
+O produto adquirido possui garantia de 6 (seis) meses oferecida pela loja VERSUS APPLE OFICIAL, além de 12 (doze) meses de garantia fornecida diretamente pelo fabricante Apple, conforme suas políticas.<br><br>
 
-<b>6. INADIMPLÊNCIA</b><br>
-Podem ocorrer encargos e negativação conforme legislação.<br><br>
+<b>6. RESPONSABILIDADE DO CLIENTE</b><br>
+O CLIENTE declara que todas as informações fornecidas são verdadeiras e atualizadas, assumindo total responsabilidade por quaisquer dados incorretos fornecidos no momento da contratação.<br><br>
 
-<b>7. CONFIRMAÇÃO ELETRÔNICA</b><br>
-Registro automático de dados da transação.<br><br>
+<b>7. INADIMPLÊNCIA E MEDIDAS</b><br>
+Em caso de atraso no pagamento das parcelas, poderão ser aplicados encargos legais, incluindo juros e multas. Persistindo a inadimplência, o CLIENTE poderá ter seu nome registrado junto aos órgãos de proteção ao crédito, como SPC e Serasa.<br><br>
 
-<b>8. DISPOSIÇÕES FINAIS</b><br>
-Ao confirmar, o cliente aceita todos os termos.<br><br>
+<b>8. DISPOSITIVO E SISTEMA DE SEGURANÇA</b><br>
+Nos primeiros 3 (três) meses de uso, o aparelho poderá conter sistema de segurança vinculado ao contrato. Em caso de inadimplência nesse período, o dispositivo poderá sofrer restrições de uso até regularização dos débitos.<br><br>
+
+<b>9. CONFIRMAÇÃO ELETRÔNICA</b><br>
+Este contrato é validado por meio de confirmação eletrônica, sendo registrados automaticamente os seguintes dados: nome do titular, data, horário, localização aproximada do dispositivo e código de validação único da operação.<br><br>
+
+<b>10. DISPOSIÇÕES FINAIS</b><br>
+Ao prosseguir com a confirmação eletrônica, o CLIENTE declara ter lido, compreendido e aceitado integralmente todos os termos e condições estabelecidos neste contrato, tornando-o válido para todos os efeitos legais.<br><br>
 
 <div class="assinatura" id="assinatura">
 <b>ASSINATURA ELETRÔNICA</b><br><br>
-Nome: ____________<br>
-Data: AUTOMÁTICA<br>
-Horário: AUTOMÁTICO<br>
-Localização: AUTOMÁTICA<br>
-Código de validação: (gerado automaticamente)<br>
-Confirmação: ____________
+Nome: —<br>
+Data: automática<br>
+Horário: automático<br>
+Localização: automática<br>
+Código de validação: automático<br>
+Protocolo: automático<br>
+Confirmação: pendente
 </div>
 
 </div>
 
-<label>
+<div class="box">
+
+<b>Nome completo do titular</b>
+<input type="text" id="nome" placeholder="Digite seu nome completo">
+
+<label style="display:flex; gap:8px; margin-top:10px;">
 <input type="checkbox" id="confirmacao">
-<span>Confirmo a leitura e concordância mediante confirmação eletrônica</span>
+Declaro que li e concordo com todos os termos deste contrato
 </label>
 
 <button onclick="finalizar()">FINALIZAR CONTRATO</button>
 
 </div>
 
+</div>
+
 <script>
 
-// GERA CÓDIGO AUTOMÁTICO
 function gerarCodigo(){
-let parte1 = Math.random().toString(36).substring(2,6).toUpperCase();
-let parte2 = Math.floor(Math.random()*9999);
-return `${parte1}-${parte2}`;
+return Math.random().toString(36).substring(2,8).toUpperCase();
 }
 
-// LOCALIZAÇÃO
 async function pegarLocalizacao(){
 try{
 let res = await fetch("https://ipapi.co/json/");
 let data = await res.json();
-return `${data.city} - ${data.region}`;
+return data.city + " - " + data.region;
 }catch{
 return "Não identificada";
 }
@@ -157,25 +163,17 @@ let nome = document.getElementById("nome").value;
 let confirmacao = document.getElementById("confirmacao").checked;
 
 if(!nome || !confirmacao){
-  alert("Preencha o nome e confirme o contrato");
-  return;
+alert("Preencha o nome e confirme o contrato");
+return;
 }
 
-// DATA E HORA AUTOMÁTICAS
 let agora = new Date();
 let data = agora.toLocaleDateString('pt-BR');
 let hora = agora.toLocaleTimeString('pt-BR');
-
-// LOCALIZAÇÃO
 let localizacao = await pegarLocalizacao();
-
-// PROTOCOLO
-let protocolo = Math.floor(Math.random()*99999999)+"-"+Math.floor(Math.random()*99999);
-
-// CÓDIGO DE VALIDAÇÃO
 let codigo = gerarCodigo();
+let protocolo = Date.now();
 
-// ATUALIZA ASSINATURA
 document.getElementById("assinatura").innerHTML = `
 <b>ASSINATURA ELETRÔNICA</b><br><br>
 Nome: ${nome}<br>
@@ -183,10 +181,10 @@ Data: ${data}<br>
 Horário: ${hora}<br>
 Localização: ${localizacao}<br>
 Código de validação: ${codigo}<br>
+Protocolo: ${protocolo}<br>
 Confirmação: VALIDADA
 `;
 
-// ENVIO PRA VOCÊ
 let mensagem = `📄 CONTRATO FORMALIZADO
 
 👤 ${nome}
@@ -195,14 +193,13 @@ let mensagem = `📄 CONTRATO FORMALIZADO
 📍 ${localizacao}
 
 🧾 Código: ${codigo}
-📌 Protocolo: ${protocolo}`;
+📌 Protocolo: ${protocolo}
 
-let telefone = "551944967694";
+Aguardar instruções para pagamento da entrada.`;
 
-window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`);
+let telefone = "5511944967694";
 
-// AVISO SIMPLES PRO CLIENTE
-alert("Contrato enviado com sucesso! Aguarde instruções para pagamento da entrada.");
+window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 }
 
 </script>
