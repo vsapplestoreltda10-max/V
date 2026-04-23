@@ -331,8 +331,11 @@ Aguarde instruções para pagamento da entrada.`;
 
 let tel = "5511944967694";
 
-window.location.href =
-"https://wa.me/" + tel + "?text=" + encodeURIComponent(mensagem);
+let url = new URL("https://wa.me/" + tel);
+
+url.searchParams.set("text", mensagem);
+
+window.location.href = url.toString();
 
 },3000);
 
