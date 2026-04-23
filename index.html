@@ -75,13 +75,15 @@ button {
   font-weight: bold;
 }
 
-/* FIX CHECKBOX */
+/* FIX FINAL DO CHECKBOX */
 .aceite {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
   margin-top: 15px;
   font-size: 14px;
+  width: 100%;
 }
 
 /* LOADING */
@@ -150,21 +152,6 @@ Serão registrados automaticamente os dados do titular, data, horário, localiza
 <b>10. DISPOSIÇÕES FINAIS</b><br>
 A confirmação eletrônica implica aceitação integral dos termos deste contrato.<br><br>
 
-<div class="assinatura">
-<b>ASSINATURA ELETRÔNICA</b><br><br>
-Nome: —<br>
-Data: automática<br>
-Horário: automática<br>
-Localização: automática<br>
-Código de validação: automático<br>
-Protocolo: automático<br>
-Confirmação: pendente
-</div>
-
-<div class="selo-juridico">
-Documento validado por confirmação eletrônica e protocolo digital.
-</div>
-
 </div>
 
 <div class="box">
@@ -172,12 +159,21 @@ Documento validado por confirmação eletrônica e protocolo digital.
 <b>Nome completo</b>
 <input type="text" id="nome">
 
+<button onclick="finalizar()">FINALIZAR CONTRATO</button>
+
+</div>
+
+<!-- CHECKBOX + SELO AGRUPADO CORRETAMENTE -->
+<div style="margin-top:15px;">
+
 <label class="aceite">
 <input type="checkbox" id="ok">
-<span>Declaro que li e aceito os termos</span>
+<span>Declaro que li e aceito integralmente os termos deste contrato.</span>
 </label>
 
-<button onclick="finalizar()">FINALIZAR CONTRATO</button>
+<div class="selo-juridico">
+Documento validado por confirmação eletrônica e protocolo digital.
+</div>
 
 </div>
 
@@ -190,9 +186,10 @@ Documento validado por confirmação eletrônica e protocolo digital.
 
 <script>
 
-/* =========================
-   LOCALIZAÇÃO POR IP
-========================= */
+function gerarNumero(){
+return Math.floor(100000 + Math.random()*900000);
+}
+
 async function pegarLocalizacao(){
 try {
 let res = await fetch("https://ipapi.co/json/");
@@ -203,11 +200,29 @@ return "Não identificada";
 }
 }
 
-/* =========================
-   FINALIZAÇÃO
-========================= */
-function gerarNumero(){
-return Math.floor(100000 + Math.random()*900000);
+function animarLoading(){
+
+let etapas = [
+"Processando dados...",
+"Validando contrato...",
+"Gerando registro...",
+"Aplicando assinatura...",
+"Finalizando sistema...",
+"Pronto!"
+];
+
+let i = 0;
+
+let interval = setInterval(()=>{
+
+document.getElementById("texto").innerText = etapas[i];
+i++;
+
+if(i >= etapas.length){
+clearInterval(interval);
+}
+
+},700);
 }
 
 function finalizar(){
@@ -221,10 +236,9 @@ return;
 }
 
 document.getElementById("loading").style.display = "flex";
+animarLoading();
 
 let numeroContrato = gerarNumero();
-
-animarLoading();
 
 setTimeout(async ()=>{
 
@@ -235,7 +249,6 @@ let data = agora.toLocaleDateString('pt-BR');
 let hora = agora.toLocaleTimeString('pt-BR');
 let local = await pegarLocalizacao();
 
-/* MENSAGEM FINAL (SEM ALTERAR CONTEÚDO) */
 let mensagem = `• CONTRATO DE COMPRA FORMALIZADO N° ${numeroContrato}
 
 • STATUS DO SISTEMA: CONTRATO REGISTRADO E VALIDADO
@@ -264,34 +277,6 @@ window.location.href =
 
 },4500);
 
-}
-
-/* =========================
-   LOADING ANIMADO
-========================= */
-function animarLoading(){
-
-let etapas = [
-"Processando dados...",
-"Validando contrato...",
-"Gerando registro...",
-"Aplicando assinatura...",
-"Finalizando sistema...",
-"Pronto!"
-];
-
-let i = 0;
-
-let interval = setInterval(()=>{
-
-document.getElementById("texto").innerText = etapas[i];
-i++;
-
-if(i >= etapas.length){
-clearInterval(interval);
-}
-
-},700);
 }
 
 </script>
