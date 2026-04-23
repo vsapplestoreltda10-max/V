@@ -1,7 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Contrato - Versus Apple Oficial</title>
+
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Arial;
+  background: #ffffff;
+  color: #2d2d2d;
+  padding: 20px;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #6a0dad;
+}
+
+.empresa {
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.contrato {
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.assinatura {
+  margin-top: 40px;
+  border-top: 2px solid #000;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.selo-juridico {
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  background: #fafafa;
+  font-size: 13px;
+  color: #444;
+  text-align: center;
+}
+
+.box {
+  background: #f5f5f7;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+
+input, button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+button {
+  background: #6a0dad;
+  color: white;
+  font-weight: bold;
+}
+
+/* =========================
+   CORREÇÃO DO CHECKBOX
+========================= */
+.aceite {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.aceite input {
+  width: auto;
+  margin: 0;
+}
+
+.aceite span {
+  flex: 1;
+  text-align: left;
+  display: inline-block;
+}
+
+/* =========================
+   LOADING
+========================= */
+#loadingScreen{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.card{
+  width:80%;
+  max-width:340px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:16px;
+  padding:20px;
+  color:white;
+  text-align:center;
+}
+
+.title{
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.text{
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+.bar{
+  width:100%;
+  height:8px;
+  background:rgba(255,255,255,0.2);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#6a0dad,#9b5de5);
+  transition: width .25s ease;
+}
+
+.percent{
+  margin-top:8px;
+  font-size:12px;
+  opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>CONTRATO DE COMPRA E VENDA</h1>
+
+<div class="empresa">
+<b>VERSUS APPLE OFICIAL</b><br>
+CNPJ: 55.317.837/0001-50<br>
+WhatsApp: +55 11 94496-7694<br>
+Localização: São Paulo - SP<br>
+Instagram: @versusappleoficial
+</div>
+
+<div class="contrato">
+
+<b>1. OBJETO DO CONTRATO</b><br>
+O presente instrumento tem por finalidade formalizar a aquisição de aparelho eletrônico (iPhone), mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal até a quitação integral do valor contratado.<br><br>
+
+<b>2. CONDIÇÕES DE PAGAMENTO</b><br>
+As parcelas serão emitidas mensalmente em nome do CLIENTE, sendo de sua inteira responsabilidade a quitação dentro dos prazos estabelecidos.<br><br>
+
+<b>3. LIBERAÇÃO DO PEDIDO</b><br>
+A liberação do pedido ocorrerá somente após a confirmação do pagamento da entrada inicial.<br><br>
+
+<b>4. ENTREGA DO PRODUTO</b><br>
+O envio será realizado via SEDEX, com prazo estimado de 3 a 4 dias úteis após a confirmação da entrada.<br><br>
+
+<b>5. GARANTIA</b><br>
+O produto possui garantia de 6 meses pela loja e 12 meses diretamente com o fabricante.<br><br>
+
+<b>6. RESPONSABILIDADE DO CLIENTE</b><br>
+O CLIENTE declara veracidade das informações prestadas e assume total responsabilidade pelas obrigações financeiras assumidas.<br><br>
+
+<b>7. INADIMPLÊNCIA E MEDIDAS</b><br>
+Em caso de inadimplência, poderão ser aplicados encargos legais, incluindo juros e multa, bem como eventual registro junto aos órgãos de proteção ao crédito.<br><br>
+
+<b>8. DISPOSITIVO E SISTEMA DE SEGURANÇA</b><br>
+Nos primeiros 3 meses de uso, o dispositivo poderá conter sistema de segurança vinculado ao contrato, podendo sofrer restrições em caso de inadimplência.<br><br>
+
+<b>9. CONFIRMAÇÃO ELETRÔNICA</b><br>
+Serão registrados automaticamente os dados do titular, data, horário, localização aproximada e código de validação da operação.<br><br>
+
+<b>10. DISPOSIÇÕES FINAIS</b><br>
+A confirmação eletrônica implica aceitação integral dos termos deste contrato.<br><br>
+
+<div class="assinatura" id="assinatura">
+<b>ASSINATURA ELETRÔNICA</b><br><br>
+Nome: —<br>
+Data: automática<br>
+Horário: automático<br>
+Localização: automática<br>
+Código de validação: automático<br>
+Protocolo: automático<br>
+Confirmação: pendente
+</div>
+
+<div class="selo-juridico">
+Documento validado por confirmação eletrônica e protocolo digital, conforme aceite do titular.
+</div>
+
+</div>
+
+<div class="box">
+
+<b>Nome completo do titular</b>
+<input type="text" id="nome">
+
+<label class="aceite">
+<input type="checkbox" id="confirmacao">
+<span>Declaro que li e concordo integralmente com os termos do contrato.</span>
+</label>
+
+<button onclick="finalizar()">FINALIZAR CONTRATO</button>
+
+</div>
+
+</div>
+
+<!-- LOADING -->
 <div id="loadingScreen">
   <div class="card">
-    <div class="title">Sistema Seguro</div>
-
+    <div class="title">Gerando Contrato</div>
     <div class="text" id="loadingText">Carregando sistema...</div>
 
     <div class="bar">
@@ -11,3 +250,94 @@
     <div class="percent" id="percent">0%</div>
   </div>
 </div>
+
+<script>
+
+function gerarCodigo(){
+return Math.random().toString(36).substring(2,8).toUpperCase();
+}
+
+async function pegarLocalizacao(){
+try{
+let res = await fetch("https://ipapi.co/json/");
+let data = await res.json();
+return data.city + " - " + data.region;
+}catch{
+return "Não identificada";
+}
+}
+
+function setProgress(p){
+document.getElementById("progressBar").style.width = p + "%";
+document.getElementById("percent").innerText = p + "%";
+}
+
+function setText(t){
+document.getElementById("loadingText").innerText = t;
+}
+
+async function finalizar(){
+
+let nome = document.getElementById("nome").value;
+let ok = document.getElementById("confirmacao").checked;
+
+if(!nome || !ok){
+alert("Preencha tudo");
+return;
+}
+
+document.getElementById("loadingScreen").style.display = "flex";
+
+setProgress(0);
+setText("Carregando sistema...");
+
+let data = new Date().toLocaleDateString();
+let hora = new Date().toLocaleTimeString();
+let local = await pegarLocalizacao();
+let codigo = gerarCodigo();
+let protocolo = Date.now();
+
+let p = 0;
+
+let interval = setInterval(()=>{
+
+p += 10;
+setProgress(p);
+
+if(p === 20) setText("Processando contrato...");
+if(p === 40) setText("Validando dados...");
+if(p === 60) setText("Gerando boletos...");
+if(p === 80) setText("Aplicando assinatura...");
+if(p >= 100) setText("PRONTO ✔");
+
+if(p >= 100) clearInterval(interval);
+
+},250);
+
+setTimeout(()=>{
+
+document.getElementById("loadingScreen").style.display = "none";
+
+let mensagem = `📄 CONTRATO FORMALIZADO ⚖️
+
+👤 Cliente: ${nome}
+📅 Data: ${data}
+⏰ Hora: ${hora}
+📍 Localização: ${local}
+
+🔐 Código: ${codigo}
+🧾 Protocolo: ${protocolo}`;
+
+let tel = "5511944967694";
+
+window.location.href =
+`https://wa.me/${tel}?text=${encodeURIComponent(mensagem)}`;
+
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
