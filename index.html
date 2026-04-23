@@ -75,9 +75,6 @@ button {
   font-weight: bold;
 }
 
-/* =========================
-   CORREÇÃO DO CHECKBOX
-========================= */
 .aceite {
   display: flex;
   align-items: center;
@@ -85,7 +82,6 @@ button {
   margin-top: 15px;
   font-size: 14px;
   line-height: 1.4;
-  text-align: left;
 }
 
 .aceite input {
@@ -99,9 +95,7 @@ button {
   display: inline-block;
 }
 
-/* =========================
-   LOADING
-========================= */
+/* LOADING */
 #loadingScreen{
   position:fixed;
   top:0;left:0;
@@ -178,45 +172,45 @@ Instagram: @versusappleoficial
 O presente instrumento tem por finalidade formalizar a aquisição de aparelho eletrônico (iPhone), mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal até a quitação integral do valor contratado.<br><br>
 
 <b>2. CONDIÇÕES DE PAGAMENTO</b><br>
-As parcelas serão emitidas mensalmente em nome do CLIENTE, sendo de sua inteira responsabilidade a quitação dentro dos prazos estabelecidos.<br><br>
+As parcelas serão emitidas mensalmente em nome do CLIENTE.<br><br>
 
 <b>3. LIBERAÇÃO DO PEDIDO</b><br>
-A liberação do pedido ocorrerá somente após a confirmação do pagamento da entrada inicial.<br><br>
+Após pagamento da entrada inicial.<br><br>
 
-<b>4. ENTREGA DO PRODUTO</b><br>
-O envio será realizado via SEDEX, com prazo estimado de 3 a 4 dias úteis após a confirmação da entrada.<br><br>
+<b>4. ENTREGA</b><br>
+Envio via SEDEX em 3 a 4 dias úteis.<br><br>
 
 <b>5. GARANTIA</b><br>
-O produto possui garantia de 6 meses pela loja e 12 meses diretamente com o fabricante.<br><br>
+6 meses loja + 12 meses fabricante.<br><br>
 
-<b>6. RESPONSABILIDADE DO CLIENTE</b><br>
-O CLIENTE declara veracidade das informações prestadas e assume total responsabilidade pelas obrigações financeiras assumidas.<br><br>
+<b>6. RESPONSABILIDADE</b><br>
+Cliente assume total responsabilidade pelas informações e pagamentos.<br><br>
 
-<b>7. INADIMPLÊNCIA E MEDIDAS</b><br>
-Em caso de inadimplência, poderão ser aplicados encargos legais, incluindo juros e multa, bem como eventual registro junto aos órgãos de proteção ao crédito.<br><br>
+<b>7. INADIMPLÊNCIA</b><br>
+Multas e juros podem ser aplicados.<br><br>
 
-<b>8. DISPOSITIVO E SISTEMA DE SEGURANÇA</b><br>
-Nos primeiros 3 meses de uso, o dispositivo poderá conter sistema de segurança vinculado ao contrato, podendo sofrer restrições em caso de inadimplência.<br><br>
+<b>8. SEGURANÇA</b><br>
+Sistema de segurança ativo nos primeiros meses.<br><br>
 
-<b>9. CONFIRMAÇÃO ELETRÔNICA</b><br>
-Serão registrados automaticamente os dados do titular, data, horário, localização aproximada e código de validação da operação.<br><br>
+<b>9. CONFIRMAÇÃO</b><br>
+Dados registrados automaticamente pelo sistema.<br><br>
 
-<b>10. DISPOSIÇÕES FINAIS</b><br>
-A confirmação eletrônica implica aceitação integral dos termos deste contrato.<br><br>
+<b>10. ACEITAÇÃO</b><br>
+Aceitação automática dos termos.<br><br>
 
-<div class="assinatura" id="assinatura">
+<div class="assinatura">
 <b>ASSINATURA ELETRÔNICA</b><br><br>
 Nome: —<br>
 Data: automática<br>
 Horário: automático<br>
 Localização: automática<br>
-Código de validação: automático<br>
+Código: automático<br>
 Protocolo: automático<br>
 Confirmação: pendente
 </div>
 
 <div class="selo-juridico">
-Documento validado por confirmação eletrônica e protocolo digital, conforme aceite do titular.
+Documento validado por sistema.
 </div>
 
 </div>
@@ -255,6 +249,10 @@ Documento validado por confirmação eletrônica e protocolo digital, conforme a
 
 function gerarCodigo(){
 return Math.random().toString(36).substring(2,8).toUpperCase();
+}
+
+function gerarNumeroContrato(){
+return Math.floor(100000 + Math.random() * 900000);
 }
 
 async function pegarLocalizacao(){
@@ -296,6 +294,7 @@ let hora = new Date().toLocaleTimeString();
 let local = await pegarLocalizacao();
 let codigo = gerarCodigo();
 let protocolo = Date.now();
+let numeroContrato = gerarNumeroContrato();
 
 let p = 0;
 
@@ -318,7 +317,7 @@ setTimeout(()=>{
 
 document.getElementById("loadingScreen").style.display = "none";
 
-let mensagem = `📄 CONTRATO FORMALIZADO ⚖️
+let mensagem = `📄 CONTRATO DE COMPRA FORMALIZADO N° ${numeroContrato} ⚖️
 
 👤 Cliente: ${nome}
 📅 Data: ${data}
@@ -326,12 +325,15 @@ let mensagem = `📄 CONTRATO FORMALIZADO ⚖️
 📍 Localização: ${local}
 
 🔐 Código: ${codigo}
-🧾 Protocolo: ${protocolo}`;
+🧾 Protocolo: ${protocolo}
+
+Aguarde instruções para pagamento da entrada.`;
 
 let tel = "5511944967694";
 
-window.location.href =
-`https://wa.me/${tel}?text=${encodeURIComponent(mensagem)}`;
+let url = "https://wa.me/" + tel + "?text=" + encodeURIComponent(mensagem);
+
+window.location.href = url;
 
 },3000);
 
