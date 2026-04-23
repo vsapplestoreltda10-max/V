@@ -7,10 +7,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
+
+/* =========================
+   BASE
+========================= */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Arial;
   background: #ffffff;
-  color: #2d2d2d;
   padding: 20px;
 }
 
@@ -19,46 +22,49 @@ body {
   margin: auto;
 }
 
+/* título */
 h1 {
   text-align: center;
   color: #6a0dad;
 }
 
-.empresa {
-  font-size: 14px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-}
-
-.contrato {
-  font-size: 15px;
-  line-height: 1.8;
-  text-align: justify;
-}
-
-.assinatura {
-  margin-top: 40px;
-  border-top: 2px solid #000;
-  padding-top: 15px;
-  font-size: 14px;
-}
-
-.selo-juridico {
-  margin-top: 20px;
-  padding: 12px;
-  border: 1px solid #d9d9d9;
-  border-radius: 10px;
-  background: #fafafa;
-  font-size: 13px;
-  color: #444;
+/* =========================
+   LOADING SCREEN
+========================= */
+#loading {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
   text-align: center;
 }
 
+.bar {
+  width: 80%;
+  height: 10px;
+  background: #333;
+  border-radius: 10px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: #6a0dad;
+  transition: 0.3s;
+}
+
+/* =========================
+   FORM
+========================= */
 .box {
-  background: #f5f5f7;
-  padding: 15px;
-  border-radius: 12px;
   margin-top: 30px;
 }
 
@@ -68,7 +74,6 @@ input, button {
   margin-top: 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 15px;
 }
 
 button {
@@ -77,18 +82,13 @@ button {
   font-weight: bold;
 }
 
-.aceite {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 15px;
-  font-size: 14px;
+/* assinatura */
+.assinatura {
+  margin-top: 40px;
+  border-top: 2px solid #000;
+  padding-top: 15px;
 }
 
-.aceite input {
-  width: auto;
-  margin: 0;
-}
 </style>
 </head>
 
@@ -96,167 +96,172 @@ button {
 
 <div class="container">
 
-<h1>CONTRATO DE COMPRA E VENDA</h1>
+<h1>CONTRATO DIGITAL</h1>
 
-<div class="empresa">
-<b>VERSUS APPLE OFICIAL</b><br>
-CNPJ: 55.317.837/0001-50<br>
-WhatsApp: +55 11 94496-7694<br>
-Localização: São Paulo - SP<br>
-Instagram: @versusappleoficial
-</div>
-
-<div class="contrato">
-
-<b>1. OBJETO DO CONTRATO</b><br>
-Aquisição de aparelho eletrônico (iPhone) com pagamento via boleto e entrada obrigatória.<br><br>
-
-<b>2. CONDIÇÕES DE PAGAMENTO</b><br>
-Parcelas mensais sob responsabilidade do CLIENTE.<br><br>
-
-<b>3. LIBERAÇÃO DO PEDIDO</b><br>
-Somente após confirmação da entrada.<br><br>
-
-<b>4. ENTREGA</b><br>
-Envio via SEDEX em até 3 a 4 dias úteis.<br><br>
-
-<b>5. GARANTIA</b><br>
-6 meses loja + 12 meses fabricante.<br><br>
-
-<b>6. RESPONSABILIDADE</b><br>
-Cliente declara veracidade dos dados.<br><br>
-
-<b>7. INADIMPLÊNCIA</b><br>
-Pode gerar juros, multa e restrições legais.<br><br>
-
-<b>8. CONFIRMAÇÃO ELETRÔNICA</b><br>
-Registro automático de dados e validação.<br><br>
-
-</div>
-
+<!-- assinatura visual -->
 <div class="assinatura" id="assinatura">
 <b>ASSINATURA ELETRÔNICA</b><br><br>
 Nome: —<br>
-Data: automática<br>
-Horário: automática<br>
-Localização: automática<br>
-Código: automática<br>
-Protocolo: automática<br>
-Confirmação: pendente
+Status: pendente
 </div>
 
-<div class="selo-juridico">
-Documento validado por sistema eletrônico e protocolo digital.
-</div>
-
+<!-- input -->
 <div class="box">
+<input id="nome" placeholder="Nome completo">
 
-<b>Nome completo do titular</b>
-<input type="text" id="nome" placeholder="Digite seu nome completo">
-
-<label class="aceite">
+<label>
 <input type="checkbox" id="confirmacao">
-<span>Declaro que li e concordo com os termos do contrato.</span>
+Declaro que aceito os termos
 </label>
 
 <button onclick="finalizar()">FINALIZAR CONTRATO</button>
+</div>
 
 </div>
 
+<!-- =========================
+     LOADING UI
+========================= -->
+<div id="loading">
+<h2>📄 Processando contrato...</h2>
+<div class="bar">
+  <div class="progress" id="progress"></div>
+</div>
+<p id="statusText">Inicializando sistema...</p>
 </div>
 
 <script>
 
+/* =========================
+   GERADOR CÓDIGO
+========================= */
 function gerarCodigo(){
 return Math.random().toString(36).substring(2,8).toUpperCase();
 }
 
+/* =========================
+   SOM (CONFIRMAÇÃO)
+========================= */
+function som(){
+let audio = new Audio("https://www.soundjay.com/buttons/sounds/button-3.mp3");
+audio.play();
+}
+
+/* =========================
+   LOCALIZAÇÃO (IP)
+========================= */
 async function pegarLocalizacao(){
 try{
-let res = await fetch("https://ipapi.co/json/");
-let data = await res.json();
-return data.city + " - " + data.region;
+let r = await fetch("https://ipapi.co/json/");
+let d = await r.json();
+return d.city + " - " + d.region;
 }catch{
 return "Não identificada";
 }
 }
 
+/* =========================
+   FUNÇÃO PRINCIPAL
+========================= */
 async function finalizar(){
 
 let nome = document.getElementById("nome").value;
-let confirmacao = document.getElementById("confirmacao").checked;
+let ok = document.getElementById("confirmacao").checked;
 
-if(!nome || !confirmacao){
-alert("Preencha o nome e confirme o contrato");
+if(!nome || !ok){
+alert("Preencha tudo");
 return;
 }
 
-let agora = new Date();
-let data = agora.toLocaleDateString('pt-BR');
-let hora = agora.toLocaleTimeString('pt-BR');
-let localizacao = await pegarLocalizacao();
+/* mostra loading */
+document.getElementById("loading").style.display = "flex";
+
+let progress = 0;
+let bar = document.getElementById("progress");
+let text = document.getElementById("statusText");
+
+/* anima progresso */
+let interval = setInterval(() => {
+progress += 10;
+bar.style.width = progress + "%";
+
+if(progress == 30) text.innerHTML = "Validando dados...";
+if(progress == 60) text.innerHTML = "Gerando PDF...";
+if(progress == 90) text.innerHTML = "Finalizando contrato...";
+if(progress >= 100) clearInterval(interval);
+
+}, 300);
+
+/* dados */
+let data = new Date().toLocaleDateString();
+let hora = new Date().toLocaleTimeString();
+let local = await pegarLocalizacao();
 let codigo = gerarCodigo();
 let protocolo = Date.now();
 
-// atualiza assinatura na tela
-document.getElementById("assinatura").innerHTML = `
-<b>ASSINATURA ELETRÔNICA</b><br><br>
+/* assinatura visual */
+document.getElementById("assinatura").innerHTML =
+`<b>ASSINATURA ELETRÔNICA</b><br><br>
 Nome: ${nome}<br>
-Data: ${data}<br>
-Horário: ${hora}<br>
-Localização: ${localizacao}<br>
-Código: ${codigo}<br>
-Protocolo: ${protocolo}<br>
-Confirmação: VALIDADA
-`;
+Status: VALIDADO ✔`;
 
-// PDF
+/* espera final */
+setTimeout(() => {
+
+/* PDF */
 const { jsPDF } = window.jspdf;
 const doc = new jsPDF();
 
-let nomeArquivo = nome
-.normalize("NFD")
-.replace(/[\u0300-\u036f]/g, "")
-.replace(/[^a-zA-Z0-9 ]/g, "")
-.replace(/\s+/g, "_");
+/* nome arquivo limpo */
+let nomeArquivo = nome.replace(/\s/g,"_");
 
-doc.setFontSize(14);
-doc.text("CONTRATO DE COMPRA E VENDA", 10, 10);
+/* conteúdo PDF */
+doc.text("CONTRATO DIGITAL", 10, 10);
+doc.text("Cliente: " + nome, 10, 25);
+doc.text("Data: " + data, 10, 35);
+doc.text("Hora: " + hora, 10, 45);
+doc.text("Local: " + local, 10, 55);
+doc.text("Código: " + codigo, 10, 65);
+doc.text("Protocolo: " + protocolo, 10, 75);
+doc.text("Assinatura: " + nome, 10, 95);
 
-doc.setFontSize(11);
-doc.text(`Cliente: ${nome}`, 10, 25);
-doc.text(`Data: ${data}`, 10, 35);
-doc.text(`Hora: ${hora}`, 10, 45);
-doc.text(`Localização: ${localizacao}`, 10, 55);
-doc.text(`Código: ${codigo}`, 10, 65);
-doc.text(`Protocolo: ${protocolo}`, 10, 75);
+/* download silencioso */
+const blob = doc.output("blob");
+const url = URL.createObjectURL(blob);
 
-doc.text("ASSINATURA ELETRÔNICA:", 10, 95);
-doc.text(`${nome}`, 10, 105);
-doc.text("VALIDAÇÃO ELETRÔNICA DO SISTEMA", 10, 115);
+const a = document.createElement("a");
+a.href = url;
+a.download = `Contrato_${nomeArquivo}.pdf`;
+a.click();
 
-// download
-doc.save(`Contrato_${nomeArquivo}.pdf`);
+/* som */
+som();
 
-// WhatsApp depois
+/* WhatsApp depois */
 setTimeout(() => {
 
-let mensagem = `📄 CONTRATO FORMALIZADO ⚖️
+let msg = `📄 CONTRATO FORMALIZADO ⚖️
 
-Cliente: ${nome}
-Data: ${data}
-Horário: ${hora}
-Localização: ${localizacao}
+👤 Cliente: ${nome}
+📅 Data: ${data}
+⏰ Hora: ${hora}
+📍 Local: ${local}
 
-Código: ${codigo}
-Protocolo: ${protocolo}
+🔐 Código: ${codigo}
+🧾 Protocolo: ${protocolo}
 
-📎 PDF gerado e baixado automaticamente com assinatura eletrônica.`;
+📎 Documento gerado automaticamente com assinatura digital ✔`;
 
-let telefone = "5511944967694";
-window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+let tel = "5511944967694";
+
+document.getElementById("loading").style.display = "none";
+
+window.location.href =
+`https://wa.me/${tel}?text=${encodeURIComponent(msg)}`;
 
 }, 2000);
+
+}, 3000);
 
 }
 
