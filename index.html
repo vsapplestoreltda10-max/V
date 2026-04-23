@@ -43,7 +43,6 @@ h1 {
 }
 
 .selo-juridico {
-  margin-top: 20px;
   padding: 12px;
   border: 1px solid #d9d9d9;
   border-radius: 10px;
@@ -75,15 +74,22 @@ button {
   font-weight: bold;
 }
 
-/* FIX FINAL DO CHECKBOX */
+/* CHECKBOX FIX */
 .aceite {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 10px;
-  margin-top: 15px;
   font-size: 14px;
-  width: 100%;
+  flex: 1;
+}
+
+/* LAYOUT ACEITE + SELO */
+.validacao-area {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  flex-wrap: wrap;
 }
 
 /* LOADING */
@@ -147,7 +153,7 @@ Em caso de inadimplência, poderão ser aplicados encargos legais, incluindo jur
 Nos primeiros 3 meses de uso, o dispositivo poderá conter sistema de segurança vinculado ao contrato, podendo sofrer restrições em caso de inadimplência.<br><br>
 
 <b>9. CONFIRMAÇÃO ELETRÔNICA</b><br>
-Serão registrados automaticamente os dados do titular, data, horário, localização aproximada e código de validação da operação.<br><br>
+Serão registrados automaticamente os dados do titular, data, horário, localização aproximada e protocolo da operação.<br><br>
 
 <b>10. DISPOSIÇÕES FINAIS</b><br>
 A confirmação eletrônica implica aceitação integral dos termos deste contrato.<br><br>
@@ -163,8 +169,8 @@ A confirmação eletrônica implica aceitação integral dos termos deste contra
 
 </div>
 
-<!-- CHECKBOX + SELO AGRUPADO CORRETAMENTE -->
-<div style="margin-top:15px;">
+<!-- ACEITE + SELO CORRIGIDO -->
+<div class="validacao-area">
 
 <label class="aceite">
 <input type="checkbox" id="ok">
@@ -186,7 +192,7 @@ Documento validado por confirmação eletrônica e protocolo digital.
 
 <script>
 
-function gerarNumero(){
+function gerarProtocolo(){
 return Math.floor(100000 + Math.random()*900000);
 }
 
@@ -238,7 +244,7 @@ return;
 document.getElementById("loading").style.display = "flex";
 animarLoading();
 
-let numeroContrato = gerarNumero();
+let protocolo = gerarProtocolo();
 
 setTimeout(async ()=>{
 
@@ -249,7 +255,7 @@ let data = agora.toLocaleDateString('pt-BR');
 let hora = agora.toLocaleTimeString('pt-BR');
 let local = await pegarLocalizacao();
 
-let mensagem = `• CONTRATO DE COMPRA FORMALIZADO N° ${numeroContrato}
+let mensagem = `• CONTRATO DE COMPRA FORMALIZADO N° ${protocolo}
 
 • STATUS DO SISTEMA: CONTRATO REGISTRADO E VALIDADO
 • OPERAÇÃO: AUTENTICADA COM SUCESSO
@@ -260,8 +266,7 @@ let mensagem = `• CONTRATO DE COMPRA FORMALIZADO N° ${numeroContrato}
 • Hora: ${hora}
 • Localização: ${local}
 
-• Código de validação: automático
-• Protocolo: automático
+• Protocolo: ${protocolo}
 
 • ETAPA FINAL DE COMPRA: CONSISTE SOMENTE NO PAGAMENTO DA ENTRADA
 
