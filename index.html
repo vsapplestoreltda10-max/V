@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>Contrato - Versus Apple Oficial</title>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <style>
 body {
   font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Arial;
@@ -81,7 +83,6 @@ button {
   gap: 10px;
   margin-top: 15px;
   font-size: 14px;
-  line-height: 1.4;
 }
 
 .aceite input {
@@ -108,50 +109,44 @@ Instagram: @versusappleoficial
 <div class="contrato">
 
 <b>1. OBJETO DO CONTRATO</b><br>
-O presente instrumento tem por finalidade formalizar a aquisição de aparelho eletrônico (iPhone), mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal até a quitação integral do valor contratado.<br><br>
+Aquisição de aparelho eletrônico (iPhone) com pagamento via boleto e entrada obrigatória.<br><br>
 
 <b>2. CONDIÇÕES DE PAGAMENTO</b><br>
-As parcelas serão emitidas mensalmente em nome do CLIENTE, sendo de sua inteira responsabilidade a quitação dentro dos prazos estabelecidos.<br><br>
+Parcelas mensais sob responsabilidade do CLIENTE.<br><br>
 
 <b>3. LIBERAÇÃO DO PEDIDO</b><br>
-A liberação do pedido ocorrerá somente após a confirmação do pagamento da entrada inicial.<br><br>
+Somente após confirmação da entrada.<br><br>
 
-<b>4. ENTREGA DO PRODUTO</b><br>
-O envio será realizado via SEDEX, com prazo estimado de 3 a 4 dias úteis após a confirmação da entrada.<br><br>
+<b>4. ENTREGA</b><br>
+Envio via SEDEX em até 3 a 4 dias úteis.<br><br>
 
 <b>5. GARANTIA</b><br>
-O produto possui garantia de 6 meses pela loja e 12 meses diretamente com o fabricante.<br><br>
+6 meses loja + 12 meses fabricante.<br><br>
 
-<b>6. RESPONSABILIDADE DO CLIENTE</b><br>
-O CLIENTE declara veracidade das informações prestadas e assume total responsabilidade pelas obrigações financeiras assumidas.<br><br>
+<b>6. RESPONSABILIDADE</b><br>
+Cliente declara veracidade dos dados.<br><br>
 
-<b>7. INADIMPLÊNCIA E MEDIDAS</b><br>
-Em caso de inadimplência, poderão ser aplicados encargos legais, incluindo juros e multa, bem como eventual registro junto aos órgãos de proteção ao crédito.<br><br>
+<b>7. INADIMPLÊNCIA</b><br>
+Pode gerar juros, multa e restrições legais.<br><br>
 
-<b>8. DISPOSITIVO E SISTEMA DE SEGURANÇA</b><br>
-Nos primeiros 3 meses de uso, o dispositivo poderá conter sistema de segurança vinculado ao contrato, podendo sofrer restrições em caso de inadimplência.<br><br>
+<b>8. CONFIRMAÇÃO ELETRÔNICA</b><br>
+Registro automático de dados e validação.<br><br>
 
-<b>9. CONFIRMAÇÃO ELETRÔNICA</b><br>
-Serão registrados automaticamente os dados do titular, data, horário, localização aproximada e código de validação da operação.<br><br>
-
-<b>10. DISPOSIÇÕES FINAIS</b><br>
-A confirmação eletrônica implica aceitação integral dos termos deste contrato.<br><br>
+</div>
 
 <div class="assinatura" id="assinatura">
 <b>ASSINATURA ELETRÔNICA</b><br><br>
 Nome: —<br>
 Data: automática<br>
-Horário: automático<br>
+Horário: automática<br>
 Localização: automática<br>
-Código de validação: automático<br>
-Protocolo: automático<br>
+Código: automática<br>
+Protocolo: automática<br>
 Confirmação: pendente
 </div>
 
 <div class="selo-juridico">
-Documento validado por confirmação eletrônica e protocolo digital, conforme aceite do titular.
-</div>
-
+Documento validado por sistema eletrônico e protocolo digital.
 </div>
 
 <div class="box">
@@ -161,7 +156,7 @@ Documento validado por confirmação eletrônica e protocolo digital, conforme a
 
 <label class="aceite">
 <input type="checkbox" id="confirmacao">
-<span>Declaro que li e concordo integralmente com os termos deste contrato.</span>
+<span>Declaro que li e concordo com os termos do contrato.</span>
 </label>
 
 <button onclick="finalizar()">FINALIZAR CONTRATO</button>
@@ -203,16 +198,48 @@ let localizacao = await pegarLocalizacao();
 let codigo = gerarCodigo();
 let protocolo = Date.now();
 
+// atualiza assinatura na tela
 document.getElementById("assinatura").innerHTML = `
 <b>ASSINATURA ELETRÔNICA</b><br><br>
 Nome: ${nome}<br>
 Data: ${data}<br>
 Horário: ${hora}<br>
 Localização: ${localizacao}<br>
-Código de validação: ${codigo}<br>
+Código: ${codigo}<br>
 Protocolo: ${protocolo}<br>
 Confirmação: VALIDADA
 `;
+
+// PDF
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
+
+let nomeArquivo = nome
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g, "")
+.replace(/[^a-zA-Z0-9 ]/g, "")
+.replace(/\s+/g, "_");
+
+doc.setFontSize(14);
+doc.text("CONTRATO DE COMPRA E VENDA", 10, 10);
+
+doc.setFontSize(11);
+doc.text(`Cliente: ${nome}`, 10, 25);
+doc.text(`Data: ${data}`, 10, 35);
+doc.text(`Hora: ${hora}`, 10, 45);
+doc.text(`Localização: ${localizacao}`, 10, 55);
+doc.text(`Código: ${codigo}`, 10, 65);
+doc.text(`Protocolo: ${protocolo}`, 10, 75);
+
+doc.text("ASSINATURA ELETRÔNICA:", 10, 95);
+doc.text(`${nome}`, 10, 105);
+doc.text("VALIDAÇÃO ELETRÔNICA DO SISTEMA", 10, 115);
+
+// download
+doc.save(`Contrato_${nomeArquivo}.pdf`);
+
+// WhatsApp depois
+setTimeout(() => {
 
 let mensagem = `📄 CONTRATO FORMALIZADO ⚖️
 
@@ -221,14 +248,15 @@ Data: ${data}
 Horário: ${hora}
 Localização: ${localizacao}
 
-Código de validação: ${codigo}
+Código: ${codigo}
 Protocolo: ${protocolo}
 
-Solicitamos que o titular aguarde o envio das instruções para pagamento da entrada, a fim de dar prosseguimento à finalização da compra e respectiva baixa em sistema. ⏳📩`;
+📎 PDF gerado e baixado automaticamente com assinatura eletrônica.`;
 
-// envio whatsapp
 let telefone = "5511944967694";
 window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+}, 2000);
 
 }
 
