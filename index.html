@@ -9,94 +9,122 @@ body {
   font-family: Arial;
   background: #fff;
   color: #6a0dad;
-  text-align: center;
   padding: 20px;
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+.sub {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
 input, button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin: 8px 0;
   border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 15px;
 }
 
 button {
   background: #6a0dad;
-  color: white;
+  color: #fff;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .contrato {
   text-align: left;
-  font-size: 12px;
-  height: 300px;
+  font-size: 15px;
+  height: 420px;
   overflow-y: scroll;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.assinatura {
+  margin-top: 25px;
+  border-top: 2px solid #ccc;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<h2>📄 Contrato de Compra e Venda</h2>
-<p>Versus Apple Oficial</p>
+<h2>📄 CONTRATO DE COMPRA E VENDA</h2>
+<p class="sub">Sistema de formalização digital</p>
 
-<input type="text" id="nome" placeholder="Nome completo do cliente">
-<input type="date" id="data">
+<p style="text-align:left;"><b>Nome completo do titular</b></p>
+<input type="text" id="nome" placeholder="Digite seu nome completo">
 
 <div class="contrato">
 
 <b>VERSUS APPLE OFICIAL</b><br>
 CNPJ: 55.317.837/0001-50<br>
-Endereço: Av. Paulista, 1106 – Bela Vista – São Paulo/SP<br><br>
+Endereço: São Paulo/SP<br><br>
 
 <b>1. OBJETO DO CONTRATO</b><br>
-O presente contrato tem como objeto a aquisição de aparelho eletrônico (iPhone), realizada pelo cliente junto à VERSUS APPLE OFICIAL, mediante condições de pagamento previamente acordadas no sistema.<br><br>
-
-A compra será formalizada através de pagamento via boleto bancário, sendo composta por:<br>
-- Pagamento de entrada obrigatória para liberação do pedido<br>
-- Parcelamento do valor restante em prestações mensais, sucessivas e fixas, até a quitação integral do produto<br><br>
+Aquisição de aparelho iPhone mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal sucessivo até a quitação total.<br><br>
 
 <b>2. CONDIÇÕES DE PAGAMENTO</b><br>
-O comprador declara estar ciente de que as parcelas serão emitidas mensalmente em seu nome, comprometendo-se com o pagamento integral até a quitação total do contrato.<br><br>
+As parcelas serão emitidas mensalmente em nome do titular.<br><br>
 
-<b>3. ENTREGA DO PRODUTO</b><br>
-Após a confirmação do pagamento da entrada, o produto será enviado ao endereço informado pelo cliente, via SEDEX, com prazo estimado de 3 a 4 dias úteis.<br><br>
+<b>3. ENTREGA</b><br>
+Envio via SEDEX (3 a 4 dias úteis após entrada).<br><br>
 
 <b>4. GARANTIA</b><br>
-O produto possui 6 meses de garantia pela loja e 12 meses de garantia pelo fabricante.<br><br>
+6 meses loja + 12 meses fabricante.<br><br>
 
-<b>5. RESPONSABILIDADE DO COMPRADOR</b><br>
-O comprador declara que as informações fornecidas são verdadeiras e assume total responsabilidade pelas obrigações financeiras assumidas.<br><br>
+<b>5. RESPONSABILIDADE</b><br>
+O cliente assume todas as obrigações financeiras.<br><br>
 
 <b>6. INADIMPLÊNCIA</b><br>
-Em caso de atraso, poderão ser aplicados encargos legais, bem como eventual encaminhamento para órgãos de proteção ao crédito, conforme legislação vigente.<br><br>
+Podem ocorrer encargos e negativação conforme legislação.<br><br>
 
 <b>7. CONFIRMAÇÃO ELETRÔNICA</b><br>
-Este contrato é validado por meio de confirmação eletrônica, sendo registrados automaticamente:<br>
-- Nome do titular<br>
-- Data e horário da assinatura<br>
-- Localização aproximada<br>
-- Código de validação da transação<br><br>
+Registro automático de dados da transação.<br><br>
 
 <b>8. DISPOSIÇÕES FINAIS</b><br>
-Ao confirmar, o cliente declara estar ciente e de acordo com todos os termos deste contrato.<br><br>
+Ao confirmar, o cliente aceita todos os termos.<br><br>
+
+<div class="assinatura" id="assinatura">
+<b>ASSINATURA ELETRÔNICA</b><br><br>
+Nome: ____________<br>
+Data: AUTOMÁTICA<br>
+Horário: AUTOMÁTICO<br>
+Localização: AUTOMÁTICA<br>
+Código de validação: (gerado automaticamente)<br>
+Confirmação: ____________
+</div>
 
 </div>
 
 <label>
 <input type="checkbox" id="confirmacao">
-✔ Confirmo a leitura e concordância mediante confirmação eletrônica
+<span>Confirmo a leitura e concordância mediante confirmação eletrônica</span>
 </label>
 
 <button onclick="finalizar()">FINALIZAR CONTRATO</button>
@@ -104,92 +132,79 @@ Ao confirmar, o cliente declara estar ciente e de acordo com todos os termos des
 </div>
 
 <script>
-function formatarData(dataISO){
-let partes = dataISO.split("-");
-return `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+// GERA CÓDIGO AUTOMÁTICO
+function gerarCodigo(){
+let parte1 = Math.random().toString(36).substring(2,6).toUpperCase();
+let parte2 = Math.floor(Math.random()*9999);
+return `${parte1}-${parte2}`;
 }
 
+// LOCALIZAÇÃO
 async function pegarLocalizacao(){
 try{
 let res = await fetch("https://ipapi.co/json/");
 let data = await res.json();
-return `${data.city} - ${data.region}, ${data.country_name}`;
+return `${data.city} - ${data.region}`;
 }catch{
 return "Não identificada";
 }
 }
 
-function gerarCodigo(texto){
-let hash = 0;
-for (let i = 0; i < texto.length; i++) {
-  hash = ((hash << 5) - hash) + texto.charCodeAt(i);
-  hash |= 0;
-}
-return Math.abs(hash).toString(16).toUpperCase();
-}
-
 async function finalizar(){
 
 let nome = document.getElementById("nome").value;
-let dataInput = document.getElementById("data").value;
 let confirmacao = document.getElementById("confirmacao").checked;
 
-if(!nome || !dataInput || !confirmacao){
-  alert("Preencha os dados e realize a confirmação eletrônica");
+if(!nome || !confirmacao){
+  alert("Preencha o nome e confirme o contrato");
   return;
 }
 
-let dataFormatada = formatarData(dataInput);
+// DATA E HORA AUTOMÁTICAS
 let agora = new Date();
+let data = agora.toLocaleDateString('pt-BR');
 let hora = agora.toLocaleTimeString('pt-BR');
 
+// LOCALIZAÇÃO
 let localizacao = await pegarLocalizacao();
 
-let protocolo = Math.floor(Math.random()*99999999)+"-"+Math.floor(Math.random()*99999)+"-00";
+// PROTOCOLO
+let protocolo = Math.floor(Math.random()*99999999)+"-"+Math.floor(Math.random()*99999);
 
-let base = nome + dataFormatada + hora + protocolo;
-let codigoValidacao = gerarCodigo(base);
+// CÓDIGO DE VALIDAÇÃO
+let codigo = gerarCodigo();
 
-let mensagem = `📄 *CONTRATO FORMALIZADO - VERSUS APPLE* 
+// ATUALIZA ASSINATURA
+document.getElementById("assinatura").innerHTML = `
+<b>ASSINATURA ELETRÔNICA</b><br><br>
+Nome: ${nome}<br>
+Data: ${data}<br>
+Horário: ${hora}<br>
+Localização: ${localizacao}<br>
+Código de validação: ${codigo}<br>
+Confirmação: VALIDADA
+`;
 
-👤 Cliente: ${nome}
-📅 Data: ${dataFormatada}
-⏰ Horário: ${hora}
-📍 Localização: ${localizacao}
+// ENVIO PRA VOCÊ
+let mensagem = `📄 CONTRATO FORMALIZADO
 
-🔐 Confirmação eletrônica validada
-🧾 Código de validação: ${codigoValidacao}
+👤 ${nome}
+📅 ${data}
+⏰ ${hora}
+📍 ${localizacao}
 
+🧾 Código: ${codigo}
 📌 Protocolo: ${protocolo}`;
 
 let telefone = "551944967694";
 
 window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`);
 
-// ALERT FINAL PROFISSIONAL
-alert(`✅ CONTRATO FORMALIZADO COM SUCESSO  
-
-📄 Número de protocolo: ${protocolo}  
-
-👤 Assinante (titular): ${nome}  
-📅 Data da assinatura: ${dataFormatada}  
-⏰ Horário do registro: ${hora}  
-📍 Localização aproximada: ${localizacao}  
-
-🧾 Código de validação: ${codigoValidacao}  
-
-🔐 Confirmação eletrônica realizada com sucesso  
-✔️ Todos os dados foram registrados em sistema  
-✔️ Este contrato possui validade digital conforme aceite eletrônico  
-
-📦 Seu pedido foi registrado e vinculado a este contrato  
-💳 Aguarde as instruções para pagamento da entrada  
-
-⚠️ IMPORTANTE:  
-Este contrato estabelece a responsabilidade do titular quanto ao cumprimento das condições de pagamento acordadas, incluindo parcelas mensais até a quitação total  
-
-💜 Versus Apple Oficial agradece sua preferência`);
+// AVISO SIMPLES PRO CLIENTE
+alert("Contrato enviado com sucesso! Aguarde instruções para pagamento da entrada.");
 }
+
 </script>
 
 </body>
