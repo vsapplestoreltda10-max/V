@@ -42,6 +42,17 @@ h1 {
   font-size: 14px;
 }
 
+.selo-juridico {
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  background: #fafafa;
+  font-size: 13px;
+  color: #444;
+  text-align: center;
+}
+
 .box {
   background: #f5f5f7;
   padding: 15px;
@@ -63,6 +74,20 @@ button {
   color: white;
   font-weight: bold;
 }
+
+.aceite {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.aceite input {
+  width: auto;
+  margin: 0;
+}
 </style>
 </head>
 
@@ -70,7 +95,7 @@ button {
 
 <div class="container">
 
-<h1>📄 CONTRATO DE COMPRA E VENDA</h1>
+<h1>CONTRATO DE COMPRA E VENDA</h1>
 
 <div class="empresa">
 <b>VERSUS APPLE OFICIAL</b><br>
@@ -83,34 +108,34 @@ Instagram: @versusappleoficial
 <div class="contrato">
 
 <b>1. OBJETO DO CONTRATO</b><br>
-O presente contrato tem como objetivo formalizar a aquisição de aparelho eletrônico (iPhone) pelo CLIENTE junto à VERSUS APPLE OFICIAL, mediante pagamento realizado por meio de boleto bancário, incluindo entrada inicial obrigatória e parcelamento mensal até a quitação integral do valor total da compra.<br><br>
+O presente instrumento tem por finalidade formalizar a aquisição de aparelho eletrônico (iPhone), mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal até a quitação integral do valor contratado.<br><br>
 
 <b>2. CONDIÇÕES DE PAGAMENTO</b><br>
-O CLIENTE declara estar ciente de que o pagamento será realizado em parcelas mensais, emitidas em seu nome, sendo de sua total responsabilidade a quitação de todas as parcelas dentro dos prazos estabelecidos. O não pagamento implicará nas penalidades descritas neste contrato.<br><br>
+As parcelas serão emitidas mensalmente em nome do CLIENTE, sendo de sua inteira responsabilidade a quitação dentro dos prazos estabelecidos.<br><br>
 
 <b>3. LIBERAÇÃO DO PEDIDO</b><br>
-A liberação do pedido e início do processo de envio do produto ocorrerá somente após a confirmação do pagamento da entrada inicial.<br><br>
+A liberação do pedido ocorrerá somente após a confirmação do pagamento da entrada inicial.<br><br>
 
 <b>4. ENTREGA DO PRODUTO</b><br>
-O envio do produto será realizado por meio dos serviços dos Correios (SEDEX), com prazo estimado de entrega de 3 (três) a 4 (quatro) dias úteis, podendo variar conforme a localidade do CLIENTE.<br><br>
+O envio será realizado via SEDEX, com prazo estimado de 3 a 4 dias úteis após a confirmação da entrada.<br><br>
 
 <b>5. GARANTIA</b><br>
-O produto adquirido possui garantia de 6 (seis) meses oferecida pela loja VERSUS APPLE OFICIAL, além de 12 (doze) meses de garantia fornecida diretamente pelo fabricante Apple, conforme suas políticas.<br><br>
+O produto possui garantia de 6 meses pela loja e 12 meses diretamente com o fabricante.<br><br>
 
 <b>6. RESPONSABILIDADE DO CLIENTE</b><br>
-O CLIENTE declara que todas as informações fornecidas são verdadeiras e atualizadas, assumindo total responsabilidade por quaisquer dados incorretos fornecidos no momento da contratação.<br><br>
+O CLIENTE declara veracidade das informações prestadas e assume total responsabilidade pelas obrigações financeiras assumidas.<br><br>
 
 <b>7. INADIMPLÊNCIA E MEDIDAS</b><br>
-Em caso de atraso no pagamento das parcelas, poderão ser aplicados encargos legais, incluindo juros e multas. Persistindo a inadimplência, o CLIENTE poderá ter seu nome registrado junto aos órgãos de proteção ao crédito, como SPC e Serasa.<br><br>
+Em caso de inadimplência, poderão ser aplicados encargos legais, incluindo juros e multa, bem como eventual registro junto aos órgãos de proteção ao crédito.<br><br>
 
 <b>8. DISPOSITIVO E SISTEMA DE SEGURANÇA</b><br>
-Nos primeiros 3 (três) meses de uso, o aparelho poderá conter sistema de segurança vinculado ao contrato. Em caso de inadimplência nesse período, o dispositivo poderá sofrer restrições de uso até regularização dos débitos.<br><br>
+Nos primeiros 3 meses de uso, o dispositivo poderá conter sistema de segurança vinculado ao contrato, podendo sofrer restrições em caso de inadimplência.<br><br>
 
 <b>9. CONFIRMAÇÃO ELETRÔNICA</b><br>
-Este contrato é validado por meio de confirmação eletrônica, sendo registrados automaticamente os seguintes dados: nome do titular, data, horário, localização aproximada do dispositivo e código de validação único da operação.<br><br>
+Serão registrados automaticamente os dados do titular, data, horário, localização aproximada e código de validação da operação.<br><br>
 
 <b>10. DISPOSIÇÕES FINAIS</b><br>
-Ao prosseguir com a confirmação eletrônica, o CLIENTE declara ter lido, compreendido e aceitado integralmente todos os termos e condições estabelecidos neste contrato, tornando-o válido para todos os efeitos legais.<br><br>
+A confirmação eletrônica implica aceitação integral dos termos deste contrato.<br><br>
 
 <div class="assinatura" id="assinatura">
 <b>ASSINATURA ELETRÔNICA</b><br><br>
@@ -123,6 +148,10 @@ Protocolo: automático<br>
 Confirmação: pendente
 </div>
 
+<div class="selo-juridico">
+Documento validado por confirmação eletrônica e protocolo digital, conforme aceite do titular.
+</div>
+
 </div>
 
 <div class="box">
@@ -130,9 +159,9 @@ Confirmação: pendente
 <b>Nome completo do titular</b>
 <input type="text" id="nome" placeholder="Digite seu nome completo">
 
-<label style="display:flex; gap:8px; margin-top:10px;">
+<label class="aceite">
 <input type="checkbox" id="confirmacao">
-Declaro que li e concordo com todos os termos deste contrato
+<span>Declaro que li e concordo integralmente com os termos deste contrato.</span>
 </label>
 
 <button onclick="finalizar()">FINALIZAR CONTRATO</button>
@@ -185,21 +214,22 @@ Protocolo: ${protocolo}<br>
 Confirmação: VALIDADA
 `;
 
-let mensagem = `📄 CONTRATO FORMALIZADO
+let mensagem = `CONTRATO FORMALIZADO
 
-👤 ${nome}
-📅 ${data}
-⏰ ${hora}
-📍 ${localizacao}
+Cliente: ${nome}
+Data: ${data}
+Horário: ${hora}
+Localização: ${localizacao}
 
-🧾 Código: ${codigo}
-📌 Protocolo: ${protocolo}
+Código de validação: ${codigo}
+Protocolo: ${protocolo}
 
-Aguardar instruções para pagamento da entrada.`;
+Solicitamos que o titular aguarde o envio das instruções para pagamento da entrada, a fim de dar prosseguimento à finalização da compra e respectiva baixa em sistema.`;
 
+// envio whatsapp
 let telefone = "5511944967694";
-
 window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
 }
 
 </script>
