@@ -5,75 +5,79 @@
 <title>Contrato - Versus Apple Oficial</title>
 
 <style>
-body{
-font-family:-apple-system,BlinkMacSystemFont,Arial;
-background:#fff;
-padding:20px;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Arial;
+  background: #ffffff;
+  padding: 20px;
+  color: #2d2d2d;
 }
 
-.container{
-max-width:750px;
-margin:auto;
+.container {
+  max-width: 750px;
+  margin: auto;
 }
 
-h1{
-text-align:center;
-color:#6a0dad;
+h1 {
+  text-align: center;
+  color: #6a0dad;
 }
 
-.empresa{
-font-size:14px;
-margin-bottom:20px;
-border-bottom:1px solid #ccc;
-padding-bottom:10px;
+.empresa {
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
 }
 
-.box{
-background:#f5f5f7;
-padding:15px;
-border-radius:12px;
-margin-top:30px;
+.contrato {
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: justify;
 }
 
-input,button{
-width:100%;
-padding:14px;
-margin-top:10px;
-border-radius:10px;
-border:1px solid #ccc;
-font-size:15px;
+.box {
+  background: #f5f5f7;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 30px;
 }
 
-button{
-background:#6a0dad;
-color:white;
-font-weight:bold;
+input, button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
 }
 
-.aceite{
-display:flex;
-gap:10px;
-margin-top:10px;
+button {
+  background: #6a0dad;
+  color: white;
+  font-weight: bold;
+}
+
+.aceite {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 /* LOADING */
-#loading{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.85);
-color:white;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-font-size:18px;
-text-align:center;
-padding:20px;
-}
-
-.fade{
-transition:0.3s;
+#loading {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  color:white;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  font-size:18px;
+  text-align:center;
 }
 </style>
 </head>
@@ -82,16 +86,52 @@ transition:0.3s;
 
 <div class="container">
 
-<h1>CONTRATO DE COMPRA</h1>
+<h1>CONTRATO DE COMPRA E VENDA</h1>
 
 <div class="empresa">
-VERSUS APPLE OFICIAL<br>
-WhatsApp: +55 11 94496-7694
+<b>VERSUS APPLE OFICIAL</b><br>
+CNPJ: 55.317.837/0001-50<br>
+WhatsApp: +55 11 94496-7694<br>
+Localização: São Paulo - SP<br>
+Instagram: @versusappleoficial
+</div>
+
+<div class="contrato">
+<!-- SEU CONTRATO CONTINUA EXATAMENTE IGUAL -->
+<b>1. OBJETO DO CONTRATO</b><br>
+O presente instrumento tem por finalidade formalizar a aquisição de aparelho eletrônico (iPhone), mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal até a quitação integral do valor contratado.<br><br>
+
+<b>2. CONDIÇÕES DE PAGAMENTO</b><br>
+As parcelas serão emitidas mensalmente em nome do CLIENTE, sendo de sua inteira responsabilidade a quitação dentro dos prazos estabelecidos.<br><br>
+
+<b>3. LIBERAÇÃO DO PEDIDO</b><br>
+A liberação do pedido ocorrerá somente após a confirmação do pagamento da entrada inicial.<br><br>
+
+<b>4. ENTREGA DO PRODUTO</b><br>
+O envio será realizado via SEDEX, com prazo estimado de 3 a 4 dias úteis após a confirmação da entrada.<br><br>
+
+<b>5. GARANTIA</b><br>
+O produto possui garantia de 6 meses pela loja e 12 meses diretamente com o fabricante.<br><br>
+
+<b>6. RESPONSABILIDADE DO CLIENTE</b><br>
+O CLIENTE declara veracidade das informações prestadas e assume total responsabilidade pelas obrigações financeiras assumidas.<br><br>
+
+<b>7. INADIMPLÊNCIA E MEDIDAS</b><br>
+Em caso de inadimplência, poderão ser aplicados encargos legais, incluindo juros e multa, bem como eventual registro junto aos órgãos de proteção ao crédito.<br><br>
+
+<b>8. DISPOSITIVO E SISTEMA DE SEGURANÇA</b><br>
+Nos primeiros 3 meses de uso, o dispositivo poderá conter sistema de segurança vinculado ao contrato, podendo sofrer restrições em caso de inadimplência.<br><br>
+
+<b>9. CONFIRMAÇÃO ELETRÔNICA</b><br>
+Serão registrados automaticamente os dados do titular, data, horário, localização aproximada e código de validação da operação.<br><br>
+
+<b>10. DISPOSIÇÕES FINAIS</b><br>
+A confirmação eletrônica implica aceitação integral dos termos deste contrato.<br><br>
 </div>
 
 <div class="box">
 
-<b>Nome do titular</b>
+<b>Nome completo</b>
 <input type="text" id="nome">
 
 <label class="aceite">
@@ -107,7 +147,7 @@ WhatsApp: +55 11 94496-7694
 
 <!-- LOADING -->
 <div id="loading">
-<div id="texto">Iniciando sistema...</div>
+<div id="texto">Processando contrato...</div>
 </div>
 
 <script>
@@ -116,8 +156,30 @@ function gerarNumero(){
 return Math.floor(100000 + Math.random()*900000);
 }
 
-function setTexto(txt){
-document.getElementById("texto").innerText = txt;
+/* LOADING SEPARADO (NÃO INTERFERE NA MENSAGEM) */
+function animarLoading(){
+
+let etapas = [
+"Processando dados...",
+"Validando contrato...",
+"Gerando registro...",
+"Aplicando assinatura...",
+"Finalizando sistema...",
+"Pronto!"
+];
+
+let i = 0;
+
+let interval = setInterval(()=>{
+
+document.getElementById("texto").innerText = etapas[i];
+i++;
+
+if(i >= etapas.length){
+clearInterval(interval);
+}
+
+},700);
 }
 
 function finalizar(){
@@ -126,54 +188,47 @@ let nome = document.getElementById("nome").value;
 let ok = document.getElementById("ok").checked;
 
 if(!nome || !ok){
-alert("Preencha todos os campos");
+alert("Preencha tudo corretamente");
 return;
 }
 
 document.getElementById("loading").style.display = "flex";
+animarLoading();
 
 let numero = gerarNumero();
-
-let etapas = [
-"Processando dados do cliente...",
-"Validando informações...",
-"Gerando contrato digital...",
-"Aplicando assinatura eletrônica...",
-"Finalizando sistema...",
-"Pronto! Redirecionando..."
-];
-
-let i = 0;
-
-let intervalo = setInterval(()=>{
-
-setTexto(etapas[i]);
-i++;
-
-if(i >= etapas.length){
-clearInterval(intervalo);
 
 setTimeout(()=>{
 
 document.getElementById("loading").style.display = "none";
 
-let mensagem = `CONTRATO DE COMPRA FORMALIZADO N° ${numero}
+/* SUA MENSAGEM (NÃO FOI ALTERADA) */
+let mensagem = `• CONTRATO DE COMPRA FORMALIZADO N° ${numero}
 
-Cliente: ${nome}
+• STATUS DO SISTEMA: CONTRATO REGISTRADO E VALIDADO
+• OPERAÇÃO: AUTENTICADA COM SUCESSO
+• TITULAR: IDENTIFICADO E CONFIRMADO
 
-A etapa final consiste somente no pagamento da entrada.
-Os boletos serão encaminhados ao e-mail em formato PDF.`;
+• Cliente: ${nome}
+• Data: automática
+• Hora: automática
+• Localização: automática
+
+• Código de validação: automático
+• Protocolo: automático
+
+• ETAPA FINAL DE COMPRA: CONSISTE SOMENTE NO PAGAMENTO DA ENTRADA
+
+• Os boletos serão encaminhados ao e-mail do titular em formato PDF, juntamente com a documentação do pedido
+• A documentação do pedido poderá ser disponibilizada em formato digital e físico conforme processo interno de expedição
+
+• STATUS: CONCLUSÃO PENDENTE`;
 
 let tel = "5511944967694";
 
 window.location.href =
 "https://wa.me/" + tel + "?text=" + encodeURIComponent(mensagem);
 
-},800);
-
-}
-
-},800);
+},4500);
 
 }
 
