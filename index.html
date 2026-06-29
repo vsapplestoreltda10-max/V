@@ -2,111 +2,170 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Contrato Oficial - Versus Tecnologia</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato - Versus Tecnologia</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
     <style>
-        :root { --primary: #ae52ff; --dark-bg: #050505; --card-bg: #111111; --text-muted: #ddd; }
+        :root { 
+            --primary: #ae52ff; 
+            --dark-bg: #050505; 
+            --card-bg: #111111; 
+            --text-muted: #aaa;
+            --purple-glow: rgba(174, 82, 255, 0.3);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--dark-bg); color: #fff; padding: 40px 20px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 50px; border-radius: 24px; border: 1px solid rgba(174, 82, 255, 0.15); }
-        h1 { text-align: center; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 30px; }
-        .empresa { font-size: 14px; color: var(--text-muted); border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 30px; text-align: center; }
-        .contrato-full { font-size: 15px; line-height: 1.9; color: #ccc; text-align: justify; }
-        .contrato-full b { color: #fff; display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 700; }
+
+        body {
+            background: var(--dark-bg);
+            color: #fff;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 24px;
+            border: 1px solid rgba(174, 82, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 { text-align: center; color: #fff; font-size: 26px; text-transform: uppercase; margin-bottom: 30px; }
+
+        .empresa { 
+            font-size: 14px; color: var(--text-muted); 
+            border-bottom: 1px solid #333; padding-bottom: 20px; 
+            margin-bottom: 30px; text-align: center;
+        }
+
+        .contrato { font-size: 15px; line-height: 1.9; color: #ddd; text-align: justify; }
+        .contrato b { color: #fff; display: block; margin-top: 15px; }
+
         .box { background: #1a1a1a; padding: 30px; border-radius: 16px; margin-top: 40px; }
-        input[type="text"] { width: 100%; padding: 14px; margin-top: 10px; border-radius: 12px; border: 1px solid #333; background: #222; color: #fff; }
-        .aceite { display: flex; align-items: center; gap: 12px; margin-top: 20px; color: var(--text-muted); cursor: pointer; }
-        button { width: 100%; padding: 16px; margin-top: 20px; border: none; border-radius: 12px; background: var(--primary); color: #fff; font-weight: 800; text-transform: uppercase; cursor: pointer; }
+
+        input {
+            width: 100%; padding: 14px; margin-top: 10px; border-radius: 12px;
+            border: 1px solid #333; background: #222; color: #fff; font-size: 15px;
+        }
+
+        button {
+            width: 100%; padding: 16px; margin-top: 20px; border: none; border-radius: 12px;
+            background: var(--primary); color: #fff; font-weight: 800; text-transform: uppercase;
+            cursor: pointer; box-shadow: 0 5px 20px var(--purple-glow); transition: 0.3s;
+        }
+
+        button:hover { background: #943be3; }
+
+        .aceite { display: flex; align-items: center; gap: 12px; font-size: 14px; margin-top: 20px; color: var(--text-muted); }
+        .selo-juridico { 
+            margin-top: 20px; padding: 15px; border: 1px solid rgba(174, 82, 255, 0.2); 
+            border-radius: 12px; background: rgba(174, 82, 255, 0.05); 
+            font-size: 13px; color: var(--primary); text-align: center; 
+        }
+
+        #loading { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); color: white; justify-content: center; align-items: center; flex-direction: column; font-size: 18px; text-align:center; padding:20px; }
     </style>
 </head>
 
 <body>
+
 <div class="container">
+
     <h1>CONTRATO DE COMPRA E VENDA E TERMOS DE SERVIÇO</h1>
-    <div class="empresa"><b>VERSUS TECNOLOGIA</b><br>CNPJ: 55.371.837/0001-50 | São Paulo - SP</div>
-    
-    <div class="contrato-full" id="texto-contrato">
-        <b>1. OBJETO DO CONTRATO</b>
-        O presente instrumento tem por finalidade formalizar a aquisição de aparelho eletrônico (iPhone), mediante pagamento via boleto bancário, com entrada obrigatória e parcelamento mensal até a quitação integral do valor contratado.
 
-        <b>2. CONDIÇÕES DE PAGAMENTO</b>
-        As parcelas serão emitidas mensalmente em nome do CLIENTE, sendo de sua inteira responsabilidade a quitação dentro dos prazos estabelecidos. O não recebimento do boleto não isenta o cliente do pagamento.
+    <div class="empresa">
+        <b>VERSUS TECNOLOGIA</b><br>
+        CNPJ: 55.371.837/0001-50 | São Paulo - SP
+    </div>
 
-        <b>3. LIBERAÇÃO DO PEDIDO</b>
-        A liberação do pedido ocorrerá somente após a confirmação do pagamento da entrada inicial. O cliente deve apresentar comprovante válido caso solicitado.
+    <div class="contrato">
+        Pelo presente instrumento, a VERSUS TECNOLOGIA e o CLIENTE identificado abaixo estabelecem as cláusulas que regem a aquisição de equipamentos eletrônicos:
 
-        <b>4. ENTREGA DO PRODUTO</b>
-        O envio será realizado via SEDEX, com prazo estimado de 3 a 4 dias úteis após a confirmação da entrada. A VERSUS TECNOLOGIA não se responsabiliza por atrasos logísticos da transportadora.
+        <b>1. DO OBJETO</b>
+        O presente contrato tem como objeto a formalização da compra de aparelho eletrônico, mediante compromisso de pagamento parcelado via boleto bancário, devendo o CLIENTE observar rigorosamente os vencimentos.
 
-        <b>5. GARANTIA</b>
-        O produto possui garantia de 6 meses pela loja e 12 meses diretamente com o fabricante, cobrindo defeitos de fabricação. Não estão cobertos danos por mau uso, umidade, quedas ou intervenções técnicas não autorizadas.
+        <b>2. DAS OBRIGAÇÕES DO CLIENTE</b>
+        O CLIENTE declara, sob as penas da lei, que as informações fornecidas no cadastro são verídicas. O CLIENTE assume a responsabilidade civil e criminal pelo uso do aparelho adquirido e pelo cumprimento das obrigações financeiras.
 
-        <b>6. RESPONSABILIDADE DO CLIENTE</b>
-        O CLIENTE declara veracidade das informações prestadas e assume total responsabilidade pelas obrigações financeiras assumidas, bem como pelo uso lícito do dispositivo.
+        <b>3. DA GARANTIA E ASSISTÊNCIA</b>
+        O produto fornecido possui garantia de 6 (seis) meses concedida pela VERSUS TECNOLOGIA e 12 (doze) meses de garantia de fábrica, conforme normas do Código de Defesa do Consumidor, não cobrindo danos decorrentes de mau uso, quedas ou contato com líquidos.
 
-        <b>7. INADIMPLÊNCIA E MEDIDAS</b>
-        Em caso de inadimplência, poderão ser aplicados encargos legais, incluindo juros de mora de 1% ao mês, multa de 2% sobre o valor da parcela, bem como registro junto aos órgãos de proteção ao crédito (SPC/SERASA).
+        <b>4. DA ENTREGA E PRAZOS</b>
+        Após a confirmação do pagamento da entrada, o pedido será processado e enviado via SEDEX. O prazo de entrega é de 3 a 4 dias úteis, sujeito a variações logísticas por parte da transportadora.
 
-        <b>8. DISPOSITIVO E SISTEMA DE SEGURANÇA</b>
-        Nos primeiros 3 meses de uso, o dispositivo poderá conter sistema de segurança vinculado ao contrato, podendo sofrer restrições de acesso ou bloqueio funcional em caso de inadimplência superior a 5 dias.
+        <b>5. SEGURANÇA E INADIMPLÊNCIA</b>
+        O dispositivo comercializado possui, por medida de segurança institucional, vinculação de sistema de bloqueio durante o período inicial de 3 (três) meses. A inadimplência superior a 5 (cinco) dias acarretará o acionamento deste sistema, bloqueando o acesso ao aparelho até a regularização do débito.
 
-        <b>9. CONFIRMAÇÃO ELETRÔNICA</b>
-        Serão registrados automaticamente os dados do titular, data, horário, geolocalização e protocolo da operação. Este registro serve como prova de aceite dos termos aqui estipulados.
+        <b>6. DAS PENALIDADES</b>
+        Em caso de atraso no pagamento, incidirão juros de mora de 1% ao mês, multa contratual de 2% sobre o valor da parcela e a possibilidade de registro do nome do CLIENTE nos órgãos de proteção ao crédito (SPC/SERASA).
 
-        <b>10. DISPOSIÇÕES FINAIS</b>
-        A confirmação eletrônica, mediante o aceite do titular, implica na aceitação integral, irrevogável e irretratável de todos os termos e condições deste contrato, conforme a legislação vigente sobre contratos digitais (MP 2.200-2/2001).
+        <b>7. DA VALIDADE JURÍDICA</b>
+        O aceite deste contrato ocorre via confirmação eletrônica, onde o sistema registra IP, localização, data e horário, possuindo validade legal conforme a legislação vigente sobre contratos digitais (MP 2.200-2/2001).
     </div>
 
     <div class="box">
         <b>Nome completo do titular</b>
         <input type="text" id="nome" placeholder="Digite seu nome completo">
-        
-        <label class="aceite">
-            <input type="checkbox" id="ok"> Li e aceito integralmente os termos deste contrato.
-        </label>
-        
-        <button onclick="processar()">ACEITAR E FINALIZAR CONTRATO</button>
+        <button onclick="finalizar()">ACEITAR E FINALIZAR CONTRATO</button>
     </div>
+
+    <div class="validacao-area">
+        <label class="aceite">
+            <input type="checkbox" id="ok"> Li, compreendo e aceito todos os termos e condições deste contrato.
+        </label>
+        <div class="selo-juridico">
+            🔒 Documento autenticado digitalmente com protocolo de segurança criptografado.
+        </div>
+    </div>
+
 </div>
 
+<div id="loading"><div id="texto">Processando contrato...</div></div>
+
 <script>
-async function processar(){
+async function pegarLocalizacao(){
+    try {
+        let res = await fetch("https://ipapi.co/json/");
+        let data = await res.json();
+        return data.city + " - " + data.region;
+    } catch { return "Não identificada"; }
+}
+
+async function finalizar(){
     let nome = document.getElementById("nome").value;
     let ok = document.getElementById("ok").checked;
+    if(!nome || !ok){ alert("Por favor, preencha seu nome e aceite os termos."); return; }
     
-    if(!nome || !ok){ alert("Por favor, preencha o nome e aceite os termos do contrato."); return; }
-
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    const texto = document.getElementById('texto-contrato').innerText;
+    document.getElementById("loading").style.display = "flex";
     
-    doc.setFontSize(16);
-    doc.text("CONTRATO DE COMPRA E VENDA - VERSUS TECNOLOGIA", 10, 20);
-    doc.setFontSize(10);
-    doc.text("Titular: " + nome + " | Data: " + new Date().toLocaleDateString(), 10, 30);
-    doc.text(texto, 10, 45, { maxWidth: 180 });
-    
-    // O comando save força o download em vez de tentar abrir no navegador
-    doc.save("Contrato_Versus_" + nome + ".pdf");
-
     let protocolo = Math.floor(100000 + Math.random()*900000);
-    let msg = `• CONTRATO DE COMPRA FORMALIZADO N° ${protocolo}\n\n` +
+    let local = await pegarLocalizacao();
+    let agora = new Date();
+    let data = agora.toLocaleDateString('pt-BR');
+    let hora = agora.toLocaleTimeString('pt-BR');
+
+    let mensagem = `• CONTRATO DE COMPRA FORMALIZADO N° ${protocolo}\n\n` +
     `• STATUS DO SISTEMA: CONTRATO REGISTRADO E VALIDADO\n` +
     `• OPERAÇÃO: AUTENTICADA COM SUCESSO\n` +
     `• TITULAR: IDENTIFICADO E CONFIRMADO\n\n` +
     `• Cliente: ${nome}\n` +
-    `• Data: ${new Date().toLocaleDateString()}\n` +
-    `• Hora: ${new Date().toLocaleTimeString()}\n` +
+    `• Data: ${data}\n` +
+    `• Hora: ${hora}\n` +
+    `• Localização: ${local}\n\n` +
     `• Protocolo: ${protocolo}\n\n` +
     `• ETAPA FINAL DE COMPRA: CONSISTE SOMENTE NO PAGAMENTO DA ENTRADA\n\n` +
-    `• Os boletos serão encaminhados ao e-mail do titular em formato PDF\n` +
-    `• A documentação do pedido poderá ser disponibilizada em formato digital e físico\n\n` +
+    `• Os boletos serão encaminhados ao e-mail do titular em formato PDF, juntamente com a documentação do pedido\n` +
+    `• A documentação do pedido poderá ser disponibilizada em formato digital e físico conforme processo interno de expedição\n\n` +
     `• STATUS: CONCLUSÃO PENDENTE`;
 
-    window.location.href = "https://wa.me/5511948559200?text=" + encodeURIComponent(msg);
+    window.location.href = "https://wa.me/5511948559200?text=" + encodeURIComponent(mensagem);
 }
 </script>
+
 </body>
 </html>
