@@ -49,32 +49,32 @@
         .box { background: #1a1a1a; padding: 30px; border-radius: 16px; margin-top: 40px; }
 
         input[type="text"] {
-            width: 100%; padding: 14px; margin-top: 10px; border-radius: 12px;
+            width: 100%; padding: 14px; margin-bottom: 20px; border-radius: 12px;
             border: 1px solid #333; background: #222; color: #fff; font-size: 15px;
         }
 
-        /* AJUSTE AQUI: Alinhamento do checkbox e texto */
+        /* Ajuste do alinhamento do checkbox */
         .aceite { 
             display: flex; 
             align-items: center; 
-            gap: 10px; 
+            gap: 12px; 
             font-size: 14px; 
-            margin-top: 20px; 
-            color: #fff; /* Texto um pouco mais claro para destacar */
+            margin-bottom: 20px; 
+            color: #fff; 
             cursor: pointer;
         }
-        .aceite input { width: auto; margin-top: 0; }
+        .aceite input { width: 18px; height: 18px; cursor: pointer; }
 
         button {
-            width: 100%; padding: 16px; margin-top: 20px; border: none; border-radius: 12px;
-            background: var(--primary); color: #fff; font-weight: 800; text-transform: uppercase;
-            cursor: pointer; box-shadow: 0 5px 20px var(--purple-glow); transition: 0.3s;
+            width: 100%; padding: 18px; border: none; border-radius: 12px;
+            background: var(--primary); color: #fff; font-weight: 800; font-size: 16px;
+            text-transform: uppercase; cursor: pointer; box-shadow: 0 5px 20px var(--purple-glow); transition: 0.3s;
         }
 
-        button:hover { background: #943be3; }
+        button:hover { background: #943be3; transform: translateY(-2px); }
 
         .selo-juridico { 
-            margin-top: 20px; padding: 15px; border: 1px solid rgba(174, 82, 255, 0.2); 
+            margin-top: 25px; padding: 15px; border: 1px solid rgba(174, 82, 255, 0.2); 
             border-radius: 12px; background: rgba(174, 82, 255, 0.05); 
             font-size: 13px; color: var(--primary); text-align: center; 
         }
