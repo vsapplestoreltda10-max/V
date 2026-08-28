@@ -2,94 +2,476 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrato Oficial - Versus Tecnologia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        :root { --primary: #ae52ff; --dark-bg: #050505; --card-bg: #111111; --text-muted: #ddd; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--dark-bg); color: #fff; padding: 40px 20px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 50px; border-radius: 24px; border: 1px solid rgba(174, 82, 255, 0.15); }
-        h1 { text-align: center; color: #fff; font-size: 24px; text-transform: uppercase; margin-bottom: 30px; }
-        .empresa { font-size: 14px; color: var(--text-muted); border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 30px; text-align: center; }
-        .contrato-full { font-size: 15px; line-height: 1.9; color: #ccc; text-align: justify; }
-        .contrato-full b { color: #fff; display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 700; }
-        .box { background: #1a1a1a; padding: 30px; border-radius: 16px; margin-top: 40px; }
-        input[type="text"] { width: 100%; padding: 14px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #333; background: #222; color: #fff; }
-        .aceite { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; cursor: pointer; }
-        button { width: 100%; padding: 18px; border: none; border-radius: 12px; background: var(--primary); color: #fff; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; }
+        :root {
+            --primary: #ae52ff;
+            --primary-dark: #8d32dc;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --input-bg: #1a1a1a;
+            --text-muted: #aaa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top, rgba(174,82,255,.14), transparent 40%),
+                var(--dark-bg);
+            color: #fff;
+            padding: 25px 12px;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 26px;
+            border: 1px solid rgba(174,82,255,.18);
+            box-shadow: 0 25px 70px rgba(0,0,0,.65);
+        }
+
+        .logo {
+            width: 135px;
+            display: block;
+            margin: 0 auto 18px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        h1 span {
+            color: var(--primary);
+        }
+
+        .empresa {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.8;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #2a2a2a;
+            margin-bottom: 30px;
+        }
+
+        .empresa strong {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .contrato-full {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .contrato-full b {
+            display: block;
+            color: #fff;
+            font-size: 15px;
+            margin-top: 28px;
+            margin-bottom: 7px;
+            padding-left: 12px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .contrato-full b:first-child {
+            margin-top: 0;
+        }
+
+        .box {
+            margin-top: 45px;
+            padding: 30px;
+            background: linear-gradient(145deg, #191919, #111111);
+            border-radius: 20px;
+            border: 1px solid rgba(174,82,255,.18);
+            box-shadow: 0 15px 35px rgba(0,0,0,.35);
+        }
+
+        .box-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .box-title svg {
+            width: 21px;
+            height: 21px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .input-title {
+            display: block;
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .input-group {
+            display: flex;
+            width: 100%;
+            height: 52px;
+            margin-bottom: 18px;
+        }
+
+        .input-icon {
+            width: 52px;
+            min-width: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #202020;
+            color: var(--primary);
+            border: 1px solid rgba(174,82,255,.25);
+            border-right: none;
+            border-radius: 13px 0 0 13px;
+        }
+
+        .input-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 0;
+            height: 52px;
+            padding: 0 15px;
+            border-radius: 0 13px 13px 0;
+            border: 1px solid rgba(255,255,255,.08);
+            background: var(--input-bg);
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(174,82,255,.08);
+        }
+
+        input::placeholder {
+            color: #555;
+        }
+
+        .aceite {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .aceite input {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .aceite-info {
+            margin-top: 12px;
+            padding: 13px 15px;
+            border-left: 2px solid var(--primary);
+            border-radius: 0 10px 10px 0;
+            background: rgba(174,82,255,.06);
+            color: #777;
+            font-size: 11px;
+            line-height: 1.65;
+        }
+
+        .aceite-info strong {
+            color: #aaa;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 17px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(174,82,255,.25);
+            transition: .25s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(174,82,255,.45);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 22px;
+            color: #555;
+            font-size: 11px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 28px 18px;
+                border-radius: 22px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .contrato-full {
+                font-size: 13px;
+                line-height: 1.8;
+            }
+
+            .contrato-full b {
+                font-size: 14px;
+            }
+
+            .box {
+                padding: 22px 17px;
+                margin-top: 35px;
+            }
+
+            .aceite {
+                font-size: 12px;
+            }
+
+            .aceite-info {
+                font-size: 10.5px;
+            }
+        }
     </style>
 </head>
 
 <body>
+
 <div class="container">
-    <h1>CONTRATO DE COMPRA E VENDA E TERMOS DE SERVIÇO</h1>
-    <div class="empresa"><b>VERSUS TECNOLOGIA</b><br>CNPJ: 55.371.837/0001-50 | São Paulo - SP</div>
-    
-    <div class="contrato-full" id="texto-contrato">
+
+    <img
+        class="logo"
+        src="https://i.postimg.cc/65fDCpXM/Chat-GPT-Image-7-de-mai-de-2026-15-27-41.png"
+        alt="Versus Tecnologia"
+    >
+
+    <h1>
+        Contrato de Compra e Venda
+        <span>e Termos de Serviço</span>
+    </h1>
+
+    <div class="empresa">
+        <strong>VERSUS TECNOLOGIA</strong><br>
+        CNPJ: 55.371.837/0001-50<br>
+        São Paulo - SP
+    </div>
+
+    <div class="contrato-full">
+
         <b>1. DO OBJETO</b>
-        O presente contrato tem como objeto a formalização da compra de aparelho eletrônico, mediante compromisso de pagamento parcelado via boleto bancário, devendo o CLIENTE observar rigorosamente os vencimentos para garantir a continuidade dos serviços e a manutenção da posse do dispositivo.
+        O presente contrato tem como objeto a formalização da compra de aparelho eletrônico, mediante compromisso de pagamento parcelado via boleto bancário, devendo o CLIENTE observar os vencimentos estabelecidos e as condições previamente apresentadas para a operação.
 
         <b>2. DAS OBRIGAÇÕES DO CLIENTE</b>
-        O CLIENTE declara, sob as penas da lei, que todas as informações fornecidas no cadastro são verídicas. O CLIENTE assume total responsabilidade civil e criminal pelo uso do aparelho adquirido, comprometendo-se a zelar pelo bem e cumprir com as obrigações financeiras pactuadas nas datas de vencimento estabelecidas.
+        O CLIENTE declara que todas as informações fornecidas no cadastro são verdadeiras e atualizadas. O CLIENTE compromete-se a zelar pelo produto adquirido e cumprir as obrigações financeiras assumidas nas respectivas datas de vencimento.
 
         <b>3. DA GARANTIA E ASSISTÊNCIA TÉCNICA</b>
-        O produto fornecido possui garantia legal de 6 (seis) meses concedida pela VERSUS TECNOLOGIA e 12 (doze) meses de garantia de fábrica, conforme normas do Código de Defesa do Consumidor. A garantia não cobre danos decorrentes de mau uso, quedas, contato com líquidos ou qualquer intervenção técnica realizada por terceiros não autorizados.
+        O produto fornecido possui garantia de 6 (seis) meses concedida pela VERSUS TECNOLOGIA e garantia de fábrica de 12 (doze) meses, quando aplicável ao produto e conforme as condições do fabricante. A garantia não abrange danos decorrentes de mau uso, quedas, contato com líquidos ou intervenções técnicas realizadas por terceiros não autorizados, observadas as normas aplicáveis de proteção ao consumidor.
 
         <b>4. DA ENTREGA E PRAZOS DE ENVIO</b>
-        Após a confirmação do pagamento da entrada, o pedido será processado e enviado via SEDEX. O prazo de entrega é de 3 a 4 dias úteis, sujeito a variações logísticas por parte da transportadora. A VERSUS TECNOLOGIA se compromete a fornecer o código de rastreamento assim que o produto for postado.
+        Após a confirmação do pagamento da entrada, o pedido será processado e enviado conforme a modalidade de entrega informada. O prazo estimado de entrega é de 3 a 4 dias úteis, podendo sofrer alterações em razão de fatores logísticos. O código de rastreamento será disponibilizado após a postagem do produto.
 
         <b>5. SEGURANÇA E SISTEMA DE BLOQUEIO</b>
-        O dispositivo comercializado possui, por medida de segurança institucional, vinculação de sistema de bloqueio durante o período inicial de 3 (três) meses. A inadimplência superior a 5 (cinco) dias acarretará, automaticamente, o acionamento deste sistema, bloqueando o acesso ao aparelho até a regularização integral do débito em aberto.
+        Quando aplicável à modalidade de compra contratada, o dispositivo poderá permanecer vinculado a mecanismos de segurança e controle durante o período informado pela empresa. Eventuais medidas relacionadas a atraso ou inadimplência observarão as condições previamente informadas ao CLIENTE e a legislação aplicável.
 
         <b>6. DAS PENALIDADES E ENCARGOS</b>
-        Em caso de atraso no pagamento, incidirão sobre o valor da parcela vencida juros de mora de 1% ao mês, multa contratual de 2% sobre o montante, além da possibilidade de registro do nome do CLIENTE nos órgãos de proteção ao crédito (SPC/SERASA), conforme previsto em lei.
+        Em caso de atraso no pagamento, poderão ser aplicados os encargos previstos nas condições da contratação, respeitando os limites e disposições estabelecidos pela legislação vigente.
 
-        <b>7. DA VALIDADE JURÍDICA E ACEITE</b>
-        O aceite deste contrato ocorre via confirmação eletrônica, onde o sistema registra o IP, localização, data e horário exatos da operação. Tal registro possui plena validade legal conforme a legislação vigente sobre contratos digitais (MP 2.200-2/2001), servindo como prova de concordância total com os termos.
+        <b>7. DA VALIDADE E ACEITE ELETRÔNICO</b>
+        O aceite eletrônico realizado pelo CLIENTE representa sua manifestação de concordância com os termos apresentados neste instrumento. Os registros efetivamente realizados pelo sistema poderão ser utilizados para comprovar a realização do aceite, observadas as condições técnicas e legais aplicáveis.
 
-        <b>8. DA PRIVACIDADE E DADOS</b>
-        A VERSUS TECNOLOGIA compromete-se a manter o sigilo dos dados pessoais fornecidos pelo CLIENTE, utilizando-os estritamente para a finalidade de processamento do contrato, emissão de boletos e suporte técnico, em conformidade com a Lei Geral de Proteção de Dados (LGPD).
+        <b>8. DA PRIVACIDADE E DOS DADOS</b>
+        A VERSUS TECNOLOGIA compromete-se a utilizar os dados pessoais fornecidos pelo CLIENTE para as finalidades relacionadas à análise, processamento da compra, emissão de documentos, atendimento, suporte e demais atividades necessárias à execução da operação, observando a legislação aplicável de proteção de dados pessoais.
 
         <b>9. DA RESCISÃO CONTRATUAL</b>
-        Este contrato poderá ser rescindido em caso de descumprimento de quaisquer das cláusulas aqui dispostas, especialmente a falta de pagamento. A rescisão por parte do cliente antes da quitação total das parcelas implica na devolução imediata do dispositivo nas condições originais.
+        O contrato poderá ser encerrado nas hipóteses previstas nas condições da contratação e na legislação aplicável, especialmente diante do descumprimento das obrigações assumidas por qualquer das partes.
 
         <b>10. DAS DISPOSIÇÕES GERAIS</b>
-        Fica eleito o foro da Comarca de São Paulo - SP para dirimir quaisquer questões oriundas deste contrato, renunciando as partes a qualquer outro, por mais privilegiado que seja. O presente instrumento é firmado eletronicamente e possui força de título executivo extrajudicial.
+        As partes comprometem-se a observar as condições estabelecidas neste instrumento e as normas legais aplicáveis à relação de consumo. Eventuais controvérsias serão tratadas conforme a legislação vigente e as regras de competência aplicáveis ao caso concreto.
+
     </div>
 
     <div class="box">
-        <b>Nome completo do titular</b>
-        <input type="text" id="nome" placeholder="Digite seu nome completo">
-        
-        <label class="aceite">
-            <input type="checkbox" id="ok"> Li e aceito integralmente os termos deste contrato.
+
+        <div class="box-title">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+
+            Identificação e aceite
+
+        </div>
+
+        <label class="input-title">
+            Nome completo do titular
         </label>
-        
-        <button onclick="enviarWhatsApp()">ACEITAR E FINALIZAR CONTRATO</button>
+
+        <div class="input-group">
+
+            <div class="input-icon">
+
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
+                </svg>
+
+            </div>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome completo"
+            >
+
+        </div>
+
+        <label class="aceite">
+
+            <input
+                type="checkbox"
+                id="ok"
+            >
+
+            <span>
+                Li e aceito integralmente os termos deste contrato.
+            </span>
+
+        </label>
+
+        <div class="aceite-info">
+
+            <strong>Declaração de aceite:</strong>
+
+            Ao marcar esta opção, declaro estar ciente, ter lido e compreendido as condições apresentadas neste instrumento, concordando com os termos da operação e autorizando o prosseguimento da compra conforme as informações fornecidas.
+
+        </div>
+
+        <button onclick="enviarWhatsApp()">
+            ACEITAR E FINALIZAR CONTRATO
+        </button>
+
     </div>
+
+    <div class="footer">
+        🔒 Aceite eletrônico registrado conforme os recursos disponíveis no sistema.
+    </div>
+
 </div>
 
 <script>
-function enviarWhatsApp(){
-    let nome = document.getElementById("nome").value;
-    let ok = document.getElementById("ok").checked;
-    if(!nome || !ok){ alert("Por favor, preencha o nome e aceite os termos."); return; }
 
-    let protocolo = Math.floor(100000 + Math.random()*900000);
-    
-    let mensagem = `• CONTRATO DE COMPRA FORMALIZADO N° ${protocolo}\n\n` +
-    `• STATUS DO SISTEMA: CONTRATO REGISTRADO E VALIDADO\n` +
-    `• OPERAÇÃO: AUTENTICADA COM SUCESSO\n` +
-    `• TITULAR: IDENTIFICADO E CONFIRMADO\n\n` +
-    `• Cliente: ${nome}\n` +
-    `• Data: ${new Date().toLocaleDateString()}\n` +
-    `• Hora: ${new Date().toLocaleTimeString()}\n` +
-    `• Protocolo: ${protocolo}\n\n` +
-    `• STATUS: CONCLUSÃO PENDENTE`;
+function enviarWhatsApp() {
 
-    window.location.href = "https://wa.me/5511948559200?text=" + encodeURIComponent(mensagem);
+    const nome = document
+        .getElementById("nome")
+        .value
+        .trim();
+
+    const ok = document
+        .getElementById("ok")
+        .checked;
+
+    if (!nome || !ok) {
+
+        alert(
+            "Por favor, informe o nome completo e aceite os termos do contrato."
+        );
+
+        return;
+    }
+
+    const protocolo =
+        Math.floor(
+            100000 + Math.random() * 900000
+        );
+
+    const agora = new Date();
+
+    const data =
+        agora.toLocaleDateString("pt-BR");
+
+    const hora =
+        agora.toLocaleTimeString("pt-BR");
+
+    const mensagem =
+`*CONTRATO DE COMPRA FORMALIZADO*
+
+━━━━━━━━━━━━━━━━━━
+
+*VERSUS TECNOLOGIA*
+
+*STATUS:* ACEITE CONFIRMADO
+
+*CLIENTE:* ${nome}
+
+*DATA:* ${data}
+
+*HORA:* ${hora}
+
+*PROTOCOLO:* ${protocolo}
+
+━━━━━━━━━━━━━━━━━━
+
+O cliente declarou estar ciente, ter lido e compreendido as condições apresentadas no contrato e concordou com os termos da operação.
+
+*STATUS DA OPERAÇÃO:* CONCLUSÃO PENDENTE`;
+
+    window.location.href =
+        "https://wa.me/5511948559200?text=" +
+        encodeURIComponent(mensagem);
 }
+
 </script>
+
 </body>
 </html>
