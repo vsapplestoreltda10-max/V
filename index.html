@@ -1,287 +1,536 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contrato Oficial - Versus Tecnologia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Contrato Oficial - Versus Tecnologia</title>
 
-    <style>
-        :root {
-            --primary: #ae52ff;
-            --primary-dark: #8d32dc;
-            --dark-bg: #050505;
-            --card-bg: #111111;
-            --input-bg: #1a1a1a;
-            --text-muted: #aaa;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<style>
+:root {
+    --primary: #ae52ff;
+    --primary-dark: #8d32dc;
+    --dark-bg: #050505;
+    --card-bg: #111111;
+    --input-bg: #1a1a1a;
+    --text-muted: #aaa;
+    --success: #63e6be;
+}
 
-        body {
-            background:
-                radial-gradient(circle at top, rgba(174,82,255,.14), transparent 40%),
-                var(--dark-bg);
-            color: #fff;
-            padding: 25px 12px;
-            min-height: 100vh;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .container {
-            width: 100%;
-            max-width: 850px;
-            margin: auto;
-            background: var(--card-bg);
-            padding: 45px;
-            border-radius: 26px;
-            border: 1px solid rgba(174,82,255,.18);
-            box-shadow: 0 25px 70px rgba(0,0,0,.65);
-        }
+body {
+    background:
+        radial-gradient(circle at 50% -10%, rgba(174,82,255,.20), transparent 35%),
+        radial-gradient(circle at 0% 50%, rgba(174,82,255,.06), transparent 30%),
+        #050505;
+    color: #fff;
+    padding: 25px 12px;
+    min-height: 100vh;
+}
 
-        .logo {
-            width: 135px;
-            display: block;
-            margin: 0 auto 18px;
-        }
+.container {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.025), rgba(255,255,255,.005)),
+        var(--card-bg);
+    padding: 45px;
+    border-radius: 28px;
+    border: 1px solid rgba(174,82,255,.20);
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.70),
+        0 0 60px rgba(174,82,255,.05);
+    position: relative;
+    overflow: hidden;
+}
 
-        h1 {
-            text-align: center;
-            font-size: 25px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(174,82,255,.8),
+        transparent
+    );
+}
 
-        h1 span {
-            color: var(--primary);
-        }
+.logo {
+    width: 135px;
+    display: block;
+    margin: 0 auto 18px;
+    filter: drop-shadow(0 8px 20px rgba(174,82,255,.15));
+}
 
-        .empresa {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-            line-height: 1.8;
-            padding-bottom: 22px;
-            border-bottom: 1px solid #2a2a2a;
-            margin-bottom: 30px;
-        }
+h1 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+    line-height: 1.4;
+}
 
-        .empresa strong {
-            color: var(--primary);
-            font-size: 16px;
-        }
+h1 span {
+    color: var(--primary);
+}
 
-        .contrato-full {
-            color: #ccc;
-            font-size: 14px;
-            line-height: 1.9;
-            text-align: justify;
-        }
+.subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
 
-        .contrato-full b {
-            display: block;
-            color: #fff;
-            font-size: 15px;
-            margin-top: 28px;
-            margin-bottom: 7px;
-            padding-left: 12px;
-            border-left: 3px solid var(--primary);
-        }
+.document-badge {
+    width: fit-content;
+    margin: 0 auto 25px;
+    padding: 8px 15px;
+    border-radius: 50px;
+    background: rgba(174,82,255,.07);
+    border: 1px solid rgba(174,82,255,.18);
+    color: #aaa;
+    font-size: 10px;
+    letter-spacing: .3px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
 
-        .contrato-full b:first-child {
-            margin-top: 0;
-        }
+.document-badge .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 10px rgba(174,82,255,.7);
+}
 
-        .box {
-            margin-top: 45px;
-            padding: 30px;
-            background: linear-gradient(145deg, #191919, #111111);
-            border-radius: 20px;
-            border: 1px solid rgba(174,82,255,.18);
-            box-shadow: 0 15px 35px rgba(0,0,0,.35);
-        }
+.empresa {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.8;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #292929;
+    margin-bottom: 30px;
+}
 
-        .box-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
+.empresa strong {
+    color: var(--primary);
+    font-size: 16px;
+}
 
-        .box-title svg {
-            width: 21px;
-            height: 21px;
-            stroke: var(--primary);
-            fill: none;
-            stroke-width: 2;
-        }
+.contrato-full {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.9;
+}
 
-        .input-title {
-            display: block;
-            color: #aaa;
-            font-size: 12px;
-            margin-bottom: 7px;
-        }
+.contrato-item {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.008)),
+        #111;
+    border: 1px solid rgba(174,82,255,.13);
+    border-radius: 17px;
+    padding: 22px;
+    margin-bottom: 15px;
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.015);
+    transition: .3s ease;
+}
 
-        .input-group {
-            display: flex;
-            width: 100%;
-            height: 52px;
-            margin-bottom: 18px;
-        }
+.contrato-item:hover {
+    border-color: rgba(174,82,255,.35);
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.35),
+        0 0 20px rgba(174,82,255,.04);
+}
 
-        .input-icon {
-            width: 52px;
-            min-width: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #202020;
-            color: var(--primary);
-            border: 1px solid rgba(174,82,255,.25);
-            border-right: none;
-            border-radius: 13px 0 0 13px;
-        }
+.contrato-full b {
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    margin: 0 0 9px;
+    padding-left: 12px;
+    border-left: 3px solid var(--primary);
+}
 
-        .input-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-        }
+.box {
+    margin-top: 45px;
+    padding: 30px;
+    background:
+        linear-gradient(145deg, rgba(174,82,255,.045), rgba(255,255,255,.01)),
+        #111;
+    border-radius: 21px;
+    border: 1px solid rgba(174,82,255,.20);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.38),
+        inset 0 1px 0 rgba(255,255,255,.025);
+}
 
-        input[type="text"] {
-            flex: 1;
-            min-width: 0;
-            height: 52px;
-            padding: 0 15px;
-            border-radius: 0 13px 13px 0;
-            border: 1px solid rgba(255,255,255,.08);
-            background: var(--input-bg);
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-        }
+.security-badge {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    margin-bottom: 22px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(99,230,190,.05);
+    border: 1px solid rgba(99,230,190,.12);
+    color: #9a9a9a;
+    font-size: 10px;
+}
 
-        input[type="text"]:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(174,82,255,.08);
-        }
+.security-badge svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--success);
+    fill: none;
+    stroke-width: 2;
+}
 
-        input::placeholder {
-            color: #555;
-        }
+.box-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
 
-        .aceite {
-            display: flex;
-            align-items: flex-start;
-            gap: 11px;
-            cursor: pointer;
-            color: #ccc;
-            font-size: 13px;
-            line-height: 1.5;
-        }
+.box-title svg {
+    width: 21px;
+    height: 21px;
+    stroke: var(--primary);
+    fill: none;
+    stroke-width: 2;
+}
 
-        .aceite input {
-            width: 18px;
-            height: 18px;
-            min-width: 18px;
-            margin-top: 2px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
+.input-title {
+    display: block;
+    color: #aaa;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
 
-        .aceite-info {
-            margin-top: 12px;
-            padding: 13px 15px;
-            border-left: 2px solid var(--primary);
-            border-radius: 0 10px 10px 0;
-            background: rgba(174,82,255,.06);
-            color: #777;
-            font-size: 11px;
-            line-height: 1.65;
-        }
+.input-group {
+    display: flex;
+    width: 100%;
+    height: 52px;
+    margin-bottom: 18px;
+}
 
-        .aceite-info strong {
-            color: #aaa;
-        }
+.input-icon {
+    width: 52px;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #202020;
+    color: var(--primary);
+    border: 1px solid rgba(174,82,255,.25);
+    border-right: none;
+    border-radius: 13px 0 0 13px;
+}
 
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 17px;
-            border: none;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #fff;
-            font-size: 15px;
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(174,82,255,.25);
-            transition: .25s;
-        }
+.input-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(174,82,255,.45);
-        }
+input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    height: 52px;
+    padding: 0 15px;
+    border-radius: 0 13px 13px 0;
+    border: 1px solid rgba(255,255,255,.08);
+    background: var(--input-bg);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: .25s;
+}
 
-        .footer {
-            text-align: center;
-            margin-top: 22px;
-            color: #555;
-            font-size: 11px;
-        }
+input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(174,82,255,.08);
+}
 
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
+input::placeholder {
+    color: #555;
+}
 
-            .container {
-                padding: 28px 18px;
-                border-radius: 22px;
-            }
+.aceite {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.5;
+}
 
-            h1 {
-                font-size: 20px;
-            }
+.aceite input {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 2px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
 
-            .contrato-full {
-                font-size: 13px;
-                line-height: 1.8;
-            }
+.aceite-info {
+    margin-top: 12px;
+    padding: 13px 15px;
+    border-left: 2px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    background: rgba(174,82,255,.06);
+    color: #777;
+    font-size: 11px;
+    line-height: 1.65;
+}
 
-            .contrato-full b {
-                font-size: 14px;
-            }
+.aceite-info strong {
+    color: #aaa;
+}
 
-            .box {
-                padding: 22px 17px;
-                margin-top: 35px;
-            }
+.accept-meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 17px;
+}
 
-            .aceite {
-                font-size: 12px;
-            }
+.meta-item {
+    flex: 1;
+    padding: 11px 12px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 11px;
+}
 
-            .aceite-info {
-                font-size: 10.5px;
-            }
-        }
-    </style>
+.meta-label {
+    display: block;
+    color: #555;
+    font-size: 9px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.meta-value {
+    color: #aaa;
+    font-size: 11px;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 17px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow:
+        0 8px 25px rgba(174,82,255,.25),
+        inset 0 1px 0 rgba(255,255,255,.15);
+    transition: .25s;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.18),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: .6s;
+}
+
+button:hover::before {
+    left: 130%;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 30px rgba(174,82,255,.45),
+        inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+button:disabled {
+    cursor: wait;
+    opacity: .85;
+    transform: none;
+}
+
+.success-screen {
+    display: none;
+    margin-top: 25px;
+    padding: 24px;
+    text-align: center;
+    background:
+        linear-gradient(145deg, rgba(99,230,190,.06), rgba(255,255,255,.01)),
+        #101010;
+    border: 1px solid rgba(99,230,190,.18);
+    border-radius: 17px;
+    animation: aparecer .45s ease;
+}
+
+.success-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(99,230,190,.08);
+    border: 1px solid rgba(99,230,190,.2);
+}
+
+.success-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--success);
+    fill: none;
+    stroke-width: 2.5;
+}
+
+.success-screen h3 {
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.success-screen p {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.protocol {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: rgba(174,82,255,.07);
+    border: 1px solid rgba(174,82,255,.15);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 22px;
+    color: #555;
+    font-size: 11px;
+}
+
+.footer strong {
+    color: #777;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 28px 18px;
+        border-radius: 22px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+    }
+
+    .contrato-full {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .contrato-item {
+        padding: 18px 16px;
+        margin-bottom: 12px;
+    }
+
+    .contrato-full b {
+        font-size: 14px;
+    }
+
+    .box {
+        padding: 22px 17px;
+        margin-top: 35px;
+    }
+
+    .accept-meta {
+        flex-direction: column;
+    }
+
+    .security-badge {
+        font-size: 9.5px;
+    }
+
+    .aceite {
+        font-size: 12px;
+    }
+
+    .aceite-info {
+        font-size: 10.5px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -299,6 +548,15 @@
         <span>e Termos de Serviço</span>
     </h1>
 
+    <div class="subtitle">
+        Leia atentamente as condições abaixo antes de confirmar seu aceite.
+    </div>
+
+    <div class="document-badge">
+        <span class="dot"></span>
+        Documento eletrônico de compra e venda
+    </div>
+
     <div class="empresa">
         <strong>VERSUS TECNOLOGIA</strong><br>
         CNPJ: 55.371.837/0001-50<br>
@@ -307,39 +565,67 @@
 
     <div class="contrato-full">
 
-        <b>1. DO OBJETO</b>
-        O presente contrato tem como objeto a formalização da compra de aparelho eletrônico, mediante compromisso de pagamento parcelado via boleto bancário, devendo o CLIENTE observar os vencimentos estabelecidos e as condições previamente apresentadas para a operação.
+        <div class="contrato-item">
+            <b>1. DO OBJETO</b>
+            O presente contrato tem como objeto a formalização da compra de aparelho eletrônico, mediante compromisso de pagamento parcelado via boleto bancário, devendo o CLIENTE observar os vencimentos estabelecidos e as condições previamente apresentadas para a operação.
+        </div>
 
-        <b>2. DAS OBRIGAÇÕES DO CLIENTE</b>
-        O CLIENTE declara que todas as informações fornecidas no cadastro são verdadeiras e atualizadas. O CLIENTE compromete-se a zelar pelo produto adquirido e cumprir as obrigações financeiras assumidas nas respectivas datas de vencimento.
+        <div class="contrato-item">
+            <b>2. DAS OBRIGAÇÕES DO CLIENTE</b>
+            O CLIENTE declara que todas as informações fornecidas no cadastro são verdadeiras e atualizadas. O CLIENTE compromete-se a zelar pelo produto adquirido e cumprir as obrigações financeiras assumidas nas respectivas datas de vencimento.
+        </div>
 
-        <b>3. DA GARANTIA E ASSISTÊNCIA TÉCNICA</b>
-        O produto fornecido possui garantia de 6 (seis) meses concedida pela VERSUS TECNOLOGIA e garantia de fábrica de 12 (doze) meses, quando aplicável ao produto e conforme as condições do fabricante. A garantia não abrange danos decorrentes de mau uso, quedas, contato com líquidos ou intervenções técnicas realizadas por terceiros não autorizados, observadas as normas aplicáveis de proteção ao consumidor.
+        <div class="contrato-item">
+            <b>3. DA GARANTIA E ASSISTÊNCIA TÉCNICA</b>
+            O produto fornecido possui garantia de 6 (seis) meses concedida pela VERSUS TECNOLOGIA e garantia de fábrica de 12 (doze) meses, quando aplicável ao produto e conforme as condições do fabricante. A garantia não abrange danos decorrentes de mau uso, quedas, contato com líquidos ou intervenções técnicas realizadas por terceiros não autorizados, observadas as normas aplicáveis de proteção ao consumidor.
+        </div>
 
-        <b>4. DA ENTREGA E PRAZOS DE ENVIO</b>
-        Após a confirmação do pagamento da entrada, o pedido será processado e enviado conforme a modalidade de entrega informada. O prazo estimado de entrega é de 3 a 4 dias úteis, podendo sofrer alterações em razão de fatores logísticos. O código de rastreamento será disponibilizado após a postagem do produto.
+        <div class="contrato-item">
+            <b>4. DA ENTREGA E PRAZOS DE ENVIO</b>
+            Após a confirmação do pagamento da entrada, o pedido será processado e enviado conforme a modalidade de entrega informada. O prazo estimado de entrega é de 3 a 4 dias úteis, podendo sofrer alterações em razão de fatores logísticos. O código de rastreamento será disponibilizado após a postagem do produto.
+        </div>
 
-        <b>5. SEGURANÇA E SISTEMA DE BLOQUEIO</b>
-        Quando aplicável à modalidade de compra contratada, o dispositivo poderá permanecer vinculado a mecanismos de segurança e controle durante o período informado pela empresa. Eventuais medidas relacionadas a atraso ou inadimplência observarão as condições previamente informadas ao CLIENTE e a legislação aplicável.
+        <div class="contrato-item">
+            <b>5. SEGURANÇA E SISTEMA DE BLOQUEIO</b>
+            Quando aplicável à modalidade de compra contratada, o dispositivo poderá permanecer vinculado a mecanismos de segurança e controle durante o período informado pela empresa. Eventuais medidas relacionadas a atraso ou inadimplência observarão as condições previamente informadas ao CLIENTE e a legislação aplicável.
+        </div>
 
-        <b>6. DAS PENALIDADES E ENCARGOS</b>
-        Em caso de atraso no pagamento, poderão ser aplicados os encargos previstos nas condições da contratação, respeitando os limites e disposições estabelecidos pela legislação vigente.
+        <div class="contrato-item">
+            <b>6. DAS PENALIDADES E ENCARGOS</b>
+            Em caso de atraso no pagamento, poderão ser aplicados os encargos previstos nas condições da contratação, respeitando os limites e disposições estabelecidos pela legislação vigente.
+        </div>
 
-        <b>7. DA VALIDADE E ACEITE ELETRÔNICO</b>
-        O aceite eletrônico realizado pelo CLIENTE representa sua manifestação de concordância com os termos apresentados neste instrumento. Os registros efetivamente realizados pelo sistema poderão ser utilizados para comprovar a realização do aceite, observadas as condições técnicas e legais aplicáveis.
+        <div class="contrato-item">
+            <b>7. DA VALIDADE E ACEITE ELETRÔNICO</b>
+            O aceite eletrônico realizado pelo CLIENTE representa sua manifestação de concordância com os termos apresentados neste instrumento. Os registros efetivamente realizados pelo sistema poderão ser utilizados para comprovar a realização do aceite, observadas as condições técnicas e legais aplicáveis.
+        </div>
 
-        <b>8. DA PRIVACIDADE E DOS DADOS</b>
-        A VERSUS TECNOLOGIA compromete-se a utilizar os dados pessoais fornecidos pelo CLIENTE para as finalidades relacionadas à análise, processamento da compra, emissão de documentos, atendimento, suporte e demais atividades necessárias à execução da operação, observando a legislação aplicável de proteção de dados pessoais.
+        <div class="contrato-item">
+            <b>8. DA PRIVACIDADE E DOS DADOS</b>
+            A VERSUS TECNOLOGIA compromete-se a utilizar os dados pessoais fornecidos pelo CLIENTE para as finalidades relacionadas à análise, processamento da compra, emissão de documentos, atendimento, suporte e demais atividades necessárias à execução da operação, observando a legislação aplicável de proteção de dados pessoais.
+        </div>
 
-        <b>9. DA RESCISÃO CONTRATUAL</b>
-        O contrato poderá ser encerrado nas hipóteses previstas nas condições da contratação e na legislação aplicável, especialmente diante do descumprimento das obrigações assumidas por qualquer das partes.
+        <div class="contrato-item">
+            <b>9. DA RESCISÃO CONTRATUAL</b>
+            O contrato poderá ser encerrado nas hipóteses previstas nas condições da contratação e na legislação aplicável, especialmente diante do descumprimento das obrigações assumidas por qualquer das partes.
+        </div>
 
-        <b>10. DAS DISPOSIÇÕES GERAIS</b>
-        As partes comprometem-se a observar as condições estabelecidas neste instrumento e as normas legais aplicáveis à relação de consumo. Eventuais controvérsias serão tratadas conforme a legislação vigente e as regras de competência aplicáveis ao caso concreto.
+        <div class="contrato-item">
+            <b>10. DAS DISPOSIÇÕES GERAIS</b>
+            As partes comprometem-se a observar as condições estabelecidas neste instrumento e as normas legais aplicáveis à relação de consumo. Eventuais controvérsias serão tratadas conforme a legislação vigente e as regras de competência aplicáveis ao caso concreto.
+        </div>
 
     </div>
 
     <div class="box">
+
+        <div class="security-badge">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+                <path d="m9 12 2 2 4-4"/>
+            </svg>
+            Ambiente seguro • Aceite eletrônico
+        </div>
 
         <div class="box-title">
 
@@ -396,21 +682,63 @@
 
         </div>
 
-        <button onclick="enviarWhatsApp()">
+        <div class="accept-meta">
+
+            <div class="meta-item">
+                <span class="meta-label">Documento</span>
+                <span class="meta-value">Contrato eletrônico</span>
+            </div>
+
+            <div class="meta-item">
+                <span class="meta-label">Registro</span>
+                <span class="meta-value">Aceite digital</span>
+            </div>
+
+        </div>
+
+        <button id="btnAceitar" onclick="enviarWhatsApp()">
             ACEITAR E FINALIZAR CONTRATO
         </button>
+
+        <div class="success-screen" id="successScreen">
+
+            <div class="success-icon">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="m5 12 4 4L19 6"/>
+                </svg>
+
+            </div>
+
+            <h3>Contrato aceito com sucesso</h3>
+
+            <p>
+                Seu aceite foi confirmado. Estamos preparando o encaminhamento para o atendimento.
+            </p>
+
+            <div class="protocol" id="protocolText">
+                Protocolo: —
+            </div>
+
+        </div>
 
     </div>
 
     <div class="footer">
-        🔒 Aceite eletrônico registrado conforme os recursos disponíveis no sistema.
+        🔒 <strong>Registro eletrônico de aceite</strong> realizado mediante confirmação do cliente.
     </div>
 
 </div>
 
 <script>
 
+let processando = false;
+
 function enviarWhatsApp() {
+
+    if (processando) {
+        return;
+    }
 
     const nome = document
         .getElementById("nome")
@@ -421,6 +749,10 @@ function enviarWhatsApp() {
         .getElementById("ok")
         .checked;
 
+    const botao = document.getElementById("btnAceitar");
+    const successScreen = document.getElementById("successScreen");
+    const protocolText = document.getElementById("protocolText");
+
     if (!nome || !ok) {
 
         alert(
@@ -429,6 +761,8 @@ function enviarWhatsApp() {
 
         return;
     }
+
+    processando = true;
 
     const protocolo =
         Math.floor(
@@ -442,6 +776,14 @@ function enviarWhatsApp() {
 
     const hora =
         agora.toLocaleTimeString("pt-BR");
+
+    botao.disabled = true;
+    botao.innerHTML = "✓ CONTRATO ACEITO — ENVIANDO...";
+
+    protocolText.textContent =
+        "Protocolo: " + protocolo;
+
+    successScreen.style.display = "block";
 
     const mensagem =
 `*CONTRATO DE COMPRA FORMALIZADO*
@@ -466,9 +808,13 @@ O cliente declarou estar ciente, ter lido e compreendido as condições apresent
 
 *STATUS DA OPERAÇÃO:* CONCLUSÃO PENDENTE`;
 
-    window.location.href =
-        "https://wa.me/5511948559200?text=" +
-        encodeURIComponent(mensagem);
+    setTimeout(() => {
+
+        window.location.href =
+            "https://wa.me/5511948559200?text=" +
+            encodeURIComponent(mensagem);
+
+    }, 1200);
 }
 
 </script>
