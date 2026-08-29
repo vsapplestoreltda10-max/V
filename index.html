@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Contrato Oficial - Versus Tecnologia</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Alex+Brush&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -17,6 +18,7 @@
     --input-bg: #1a1a1a;
     --text-muted: #aaa;
     --success: #63e6be;
+    --danger: #ff7777;
 }
 
 * {
@@ -24,6 +26,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -105,7 +111,6 @@ h1 span {
     border: 1px solid rgba(174,82,255,.18);
     color: #aaa;
     font-size: 10px;
-    letter-spacing: .3px;
     display: flex;
     align-items: center;
     gap: 7px;
@@ -157,9 +162,6 @@ h1 span {
 .contrato-item:hover {
     border-color: rgba(174,82,255,.35);
     transform: translateY(-2px);
-    box-shadow:
-        0 12px 28px rgba(0,0,0,.35),
-        0 0 20px rgba(174,82,255,.04);
 }
 
 .contrato-full b {
@@ -271,6 +273,7 @@ input[type="text"] {
     font-size: 14px;
     outline: none;
     transition: .25s;
+    text-transform: uppercase;
 }
 
 input[type="text"]:focus {
@@ -278,8 +281,21 @@ input[type="text"]:focus {
     box-shadow: 0 0 0 3px rgba(174,82,255,.08);
 }
 
+input[type="text"].erro {
+    border-color: var(--danger);
+}
+
 input::placeholder {
     color: #555;
+    text-transform: none;
+}
+
+.validacao-msg {
+    display: none;
+    color: #ff8585;
+    font-size: 10px;
+    margin-top: -10px;
+    margin-bottom: 15px;
 }
 
 .aceite {
@@ -314,6 +330,47 @@ input::placeholder {
 
 .aceite-info strong {
     color: #aaa;
+}
+
+.observacao-assinatura {
+    margin-top: 18px;
+    padding: 16px 17px;
+    display: flex;
+    gap: 12px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(174,82,255,.08),
+            rgba(255,255,255,.025)
+        );
+    border: 1px solid rgba(174,82,255,.16);
+    border-left: 3px solid var(--primary);
+    border-radius: 13px;
+    color: #8d8d8d;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.observacao-icone {
+    width: 29px;
+    height: 29px;
+    min-width: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(174,82,255,.10);
+    border: 1px solid rgba(174,82,255,.20);
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.observacao-assinatura strong {
+    display: block;
+    color: #ddd;
+    font-size: 11px;
+    margin-bottom: 3px;
 }
 
 .accept-meta {
@@ -359,36 +416,12 @@ button {
         0 8px 25px rgba(174,82,255,.25),
         inset 0 1px 0 rgba(255,255,255,.15);
     transition: .25s;
-    position: relative;
-    overflow: hidden;
-}
-
-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.18),
-        transparent
-    );
-    transform: skewX(-20deg);
-    transition: .6s;
-}
-
-button:hover::before {
-    left: 130%;
 }
 
 button:hover {
     transform: translateY(-2px);
     box-shadow:
-        0 12px 30px rgba(174,82,255,.45),
-        inset 0 1px 0 rgba(255,255,255,.18);
+        0 12px 30px rgba(174,82,255,.45);
 }
 
 button:disabled {
@@ -397,13 +430,192 @@ button:disabled {
     transform: none;
 }
 
+/* =========================
+   ASSINATURAS
+========================= */
+
+.assinaturas {
+    margin-top: 28px;
+    padding: 30px 25px 27px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.96),
+            rgba(218,220,224,.97)
+        );
+    border: 1px solid rgba(255,255,255,.75);
+    border-radius: 20px;
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+.assinaturas-title {
+    text-align: center;
+    color: #252525;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.assinaturas-subtitle {
+    text-align: center;
+    color: #8b8b8b;
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+
+.assinaturas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.assinatura-box {
+    min-width: 0;
+    text-align: center;
+    padding: 14px 10px 12px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.76),
+            rgba(232,233,236,.86)
+        );
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 15px;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.10),
+        inset 0 1px 0 rgba(255,255,255,.85);
+}
+
+.assinatura-area {
+    height: 105px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+/* =========================
+   ASSINATURA DA EMPRESA
+   IMAGEM IBB
+========================= */
+
+.assinatura-empresa {
+    width: 90%;
+    max-height: 82px;
+    object-fit: contain;
+}
+
+/* =========================
+   ASSINATURA DO CLIENTE
+   ALEX BRUSH
+========================= */
+
+.assinatura-cliente {
+    color: #111;
+    font-family: 'Alex Brush', cursive;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+    transform: rotate(-4deg);
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    letter-spacing: .2px;
+    text-shadow: .3px .3px 0 #111;
+    max-width: 100%;
+    overflow: hidden;
+    text-transform: lowercase;
+}
+
+.assinatura-cliente.escrevendo {
+    opacity: 1;
+    animation:
+        escreverAssinatura
+        2.2s
+        cubic-bezier(.65,0,.35,1)
+        forwards;
+}
+
+@keyframes escreverAssinatura {
+
+    0% {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0;
+        transform: translateX(-10px) rotate(-4deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(2px) rotate(-4deg);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+        transform: translateX(0) rotate(-4deg);
+    }
+}
+
+.linha-assinatura {
+    width: 90%;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #555,
+            transparent
+        );
+    margin: 0 auto 7px;
+}
+
+.assinatura-nome {
+    color: #333;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.assinatura-status {
+    color: #999;
+    font-size: 9px;
+    margin-top: 4px;
+    transition: .4s;
+}
+
+.assinatura-status.confirmado {
+    color: #168b68;
+    font-weight: 700;
+}
+
+/* =========================
+   SUCESSO
+========================= */
+
 .success-screen {
     display: none;
     margin-top: 25px;
     padding: 24px;
     text-align: center;
     background:
-        linear-gradient(145deg, rgba(99,230,190,.06), rgba(255,255,255,.01)),
+        linear-gradient(
+            145deg,
+            rgba(99,230,190,.06),
+            rgba(255,255,255,.01)
+        ),
         #101010;
     border: 1px solid rgba(99,230,190,.18);
     border-radius: 17px;
@@ -466,68 +678,125 @@ button:disabled {
 }
 
 @keyframes aparecer {
+
     from {
         opacity: 0;
         transform: translateY(8px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 600px) {
 
     body {
-        padding: 10px;
+        padding: 8px;
     }
 
     .container {
-        padding: 28px 18px;
-        border-radius: 22px;
+        padding: 25px 14px;
+        border-radius: 20px;
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .subtitle {
-        font-size: 11px;
+        font-size: 10.5px;
     }
 
     .contrato-full {
-        font-size: 13px;
+        font-size: 12.5px;
         line-height: 1.8;
     }
 
     .contrato-item {
-        padding: 18px 16px;
-        margin-bottom: 12px;
+        padding: 17px 14px;
+        margin-bottom: 11px;
     }
 
     .contrato-full b {
-        font-size: 14px;
+        font-size: 13.5px;
     }
 
     .box {
-        padding: 22px 17px;
-        margin-top: 35px;
-    }
-
-    .accept-meta {
-        flex-direction: column;
-    }
-
-    .security-badge {
-        font-size: 9.5px;
+        padding: 20px 13px;
+        margin-top: 30px;
     }
 
     .aceite {
-        font-size: 12px;
+        font-size: 11.5px;
     }
 
     .aceite-info {
-        font-size: 10.5px;
+        font-size: 10px;
+    }
+
+    .observacao-assinatura {
+        font-size: 10px;
+        padding: 14px;
+    }
+
+    .accept-meta {
+        flex-direction: row;
+    }
+
+    .assinaturas {
+        padding: 22px 8px 18px;
+    }
+
+    .assinaturas-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .assinatura-box {
+        padding: 10px 5px 10px;
+        border-radius: 12px;
+    }
+
+    .assinatura-area {
+        height: 82px;
+    }
+
+    .assinatura-empresa {
+        max-width: 96%;
+        max-height: 62px;
+    }
+
+    .assinatura-cliente {
+        font-size: 27px;
+        letter-spacing: 0;
+    }
+
+    .assinatura-nome {
+        font-size: 8px;
+    }
+
+    .assinatura-status {
+        font-size: 7.5px;
+    }
+
+    .linha-assinatura {
+        width: 94%;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 15px 10px;
+    }
+
+    input[type="text"]:focus {
+        scroll-margin-top: 25px;
     }
 }
 </style>
@@ -559,7 +828,7 @@ button:disabled {
 
     <div class="empresa">
         <strong>VERSUS TECNOLOGIA</strong><br>
-        CNPJ: 55.371.837/0001-50<br>
+        CNPJ: 55.317.837/0001-50<br>
         São Paulo - SP
     </div>
 
@@ -620,11 +889,14 @@ button:disabled {
     <div class="box">
 
         <div class="security-badge">
+
             <svg viewBox="0 0 24 24">
                 <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
                 <path d="m9 12 2 2 4-4"/>
             </svg>
+
             Ambiente seguro • Aceite eletrônico
+
         </div>
 
         <div class="box-title">
@@ -639,7 +911,7 @@ button:disabled {
         </div>
 
         <label class="input-title">
-            Nome completo do titular
+            Nome completo do titular da compra
         </label>
 
         <div class="input-group">
@@ -656,9 +928,18 @@ button:disabled {
             <input
                 type="text"
                 id="nome"
-                placeholder="Digite seu nome completo"
+                placeholder="Nome completo do titular da compra"
+                autocomplete="name"
+                maxlength="80"
             >
 
+        </div>
+
+        <div
+            class="validacao-msg"
+            id="validacaoMsg"
+        >
+            Informe o nome completo do titular da compra para dar continuidade.
         </div>
 
         <label class="aceite">
@@ -676,31 +957,144 @@ button:disabled {
 
         <div class="aceite-info">
 
-            <strong>Declaração de aceite:</strong>
+            <strong>
+                Declaração de aceite:
+            </strong>
 
             Ao marcar esta opção, declaro estar ciente, ter lido e compreendido as condições apresentadas neste instrumento, concordando com os termos da operação e autorizando o prosseguimento da compra conforme as informações fornecidas.
+
+        </div>
+
+        <div class="observacao-assinatura">
+
+            <div class="observacao-icone">
+                i
+            </div>
+
+            <div>
+
+                <strong>
+                    Observação sobre a assinatura digital
+                </strong>
+
+                A representação visual da assinatura do CLIENTE será gerada automaticamente a partir do nome informado no momento da confirmação do aceite. A assinatura somente será exibida após a validação do nome completo e a confirmação dos termos deste contrato. O sistema também registrará a data, horário e protocolo do aceite.
+
+            </div>
 
         </div>
 
         <div class="accept-meta">
 
             <div class="meta-item">
-                <span class="meta-label">Documento</span>
-                <span class="meta-value">Contrato eletrônico</span>
+
+                <span class="meta-label">
+                    Documento
+                </span>
+
+                <span class="meta-value">
+                    Contrato eletrônico
+                </span>
+
             </div>
 
             <div class="meta-item">
-                <span class="meta-label">Registro</span>
-                <span class="meta-value">Aceite digital</span>
+
+                <span class="meta-label">
+                    Registro
+                </span>
+
+                <span class="meta-value">
+                    Aceite digital
+                </span>
+
             </div>
 
         </div>
 
-        <button id="btnAceitar" onclick="enviarWhatsApp()">
+        <button
+            id="btnAceitar"
+            onclick="enviarWhatsApp()"
+        >
             ACEITAR E FINALIZAR CONTRATO
         </button>
 
-        <div class="success-screen" id="successScreen">
+        <div class="assinaturas">
+
+            <div class="assinaturas-title">
+                Assinaturas do documento
+            </div>
+
+            <div class="assinaturas-subtitle">
+                Registro eletrônico das partes
+            </div>
+
+            <div class="assinaturas-grid">
+
+                <!-- EMPRESA -->
+
+                <div class="assinatura-box">
+
+                    <div class="assinatura-area">
+
+                        <img
+                            class="assinatura-empresa"
+                            src="https://i.ibb.co/v4rt9skK/assinatura.png"
+                            alt="Assinatura da empresa"
+                        >
+
+                    </div>
+
+                    <div class="linha-assinatura"></div>
+
+                    <div class="assinatura-nome">
+                        VERSUS TECNOLOGIA
+                    </div>
+
+                    <div class="assinatura-status">
+                        Assinatura da empresa
+                    </div>
+
+                </div>
+
+                <!-- CLIENTE -->
+
+                <div class="assinatura-box">
+
+                    <div class="assinatura-area">
+
+                        <div
+                            id="assinaturaCliente"
+                            class="assinatura-cliente"
+                        ></div>
+
+                    </div>
+
+                    <div class="linha-assinatura"></div>
+
+                    <div
+                        class="assinatura-nome"
+                        id="nomeAssinatura"
+                    >
+                        ASSINATURA DO CLIENTE
+                    </div>
+
+                    <div
+                        class="assinatura-status"
+                        id="statusCliente"
+                    >
+                        Aguardando aceite
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div
+            class="success-screen"
+            id="successScreen"
+        >
 
             <div class="success-icon">
 
@@ -710,13 +1104,18 @@ button:disabled {
 
             </div>
 
-            <h3>Contrato aceito com sucesso</h3>
+            <h3>
+                Contrato finalizado com sucesso
+            </h3>
 
             <p>
-                Seu aceite foi confirmado. Estamos preparando o encaminhamento para o atendimento.
+                Seu aceite foi registrado, a representação visual da assinatura foi vinculada ao documento e o contrato foi finalizado.
             </p>
 
-            <div class="protocol" id="protocolText">
+            <div
+                class="protocol"
+                id="protocolText"
+            >
                 Protocolo: —
             </div>
 
@@ -725,7 +1124,10 @@ button:disabled {
     </div>
 
     <div class="footer">
-        🔒 <strong>Registro eletrônico de aceite</strong> realizado mediante confirmação do cliente.
+
+        🔒 <strong>Registro eletrônico de aceite</strong>
+        realizado mediante confirmação do cliente.
+
     </div>
 
 </div>
@@ -734,56 +1136,534 @@ button:disabled {
 
 let processando = false;
 
+const campoNome =
+    document.getElementById("nome");
+
+
+/* =========================
+   MAIÚSCULAS NO CAMPO
+========================= */
+
+campoNome.addEventListener("input", function() {
+
+    const posicao =
+        this.selectionStart;
+
+    this.value =
+        this.value.toLocaleUpperCase("pt-BR");
+
+    this.setSelectionRange(
+        posicao,
+        posicao
+    );
+
+    validarNomeVisual();
+
+});
+
+
+/* =========================
+   MOBILE
+========================= */
+
+campoNome.addEventListener("focus", function() {
+
+    setTimeout(() => {
+
+        this.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 350);
+
+});
+
+
+/* =========================
+   VALIDAÇÃO DO NOME
+========================= */
+
+function validarNome(nome) {
+
+    nome = nome
+        .trim()
+        .replace(/\s+/g, " ");
+
+    if (nome.length < 5) {
+        return false;
+    }
+
+    if (nome.length > 80) {
+        return false;
+    }
+
+    const formato =
+        /^[A-ZÀ-Ý][A-ZÀ-Ý' -]*$/i;
+
+    if (!formato.test(nome)) {
+        return false;
+    }
+
+    const partes =
+        nome
+            .split(" ")
+            .filter(Boolean);
+
+    if (partes.length < 2) {
+        return false;
+    }
+
+    for (const parte of partes) {
+
+        const letras =
+            parte.replace(
+                /[^A-ZÀ-Ý]/gi,
+                ""
+            );
+
+        if (letras.length < 2) {
+            return false;
+        }
+    }
+
+    const letras =
+        nome.replace(
+            /[^A-ZÀ-Ý]/gi,
+            ""
+        );
+
+    const contador = {};
+
+    for (const letra of letras) {
+
+        contador[letra] =
+            (contador[letra] || 0) + 1;
+    }
+
+    const maior =
+        Math.max(
+            ...Object.values(contador)
+        );
+
+    if (
+        letras.length >= 6 &&
+        maior / letras.length > .65
+    ) {
+        return false;
+    }
+
+    if (/(.)\1\1\1/i.test(nome)) {
+        return false;
+    }
+
+    const bloqueados = [
+        "TESTE TESTE",
+        "NOME NOME",
+        "NOME TESTE",
+        "ABC ABC",
+        "ASDF ASDF",
+        "QWERTY QWERTY",
+        "SEM NOME",
+        "NAO SEI"
+    ];
+
+    const normalizado =
+        nome
+            .normalize("NFD")
+            .replace(
+                /[\u0300-\u036f]/g,
+                ""
+            );
+
+    for (const item of bloqueados) {
+
+        const palavra =
+            item
+                .normalize("NFD")
+                .replace(
+                    /[\u0300-\u036f]/g,
+                    ""
+                );
+
+        if (
+            normalizado === palavra
+        ) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+/* =========================
+   MENSAGEM DE VALIDAÇÃO
+========================= */
+
+function validarNomeVisual() {
+
+    const valor =
+        campoNome.value.trim();
+
+    const mensagem =
+        document.getElementById(
+            "validacaoMsg"
+        );
+
+    if (!valor) {
+
+        campoNome.classList.remove(
+            "erro"
+        );
+
+        mensagem.style.display =
+            "none";
+
+        return;
+    }
+
+    if (validarNome(valor)) {
+
+        campoNome.classList.remove(
+            "erro"
+        );
+
+        mensagem.style.display =
+            "none";
+
+    } else {
+
+        campoNome.classList.add(
+            "erro"
+        );
+
+        mensagem.style.display =
+            "block";
+    }
+}
+
+
+/* =========================
+   SOM DE LÁPIS
+========================= */
+
+function tocarSomLapiz() {
+
+    try {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if (!AudioContext) {
+            return;
+        }
+
+        const audio =
+            new AudioContext();
+
+        const inicio =
+            audio.currentTime;
+
+        const duracao =
+            2.2;
+
+        const ganho =
+            audio.createGain();
+
+        ganho.gain.setValueAtTime(
+            0.0001,
+            inicio
+        );
+
+        ganho.gain.linearRampToValueAtTime(
+            0.035,
+            inicio + .08
+        );
+
+        ganho.gain.setValueAtTime(
+            .025,
+            inicio + duracao - .15
+        );
+
+        ganho.gain.linearRampToValueAtTime(
+            .0001,
+            inicio + duracao
+        );
+
+        ganho.connect(
+            audio.destination
+        );
+
+        const tamanho =
+            Math.floor(
+                audio.sampleRate *
+                duracao
+            );
+
+        const buffer =
+            audio.createBuffer(
+                1,
+                tamanho,
+                audio.sampleRate
+            );
+
+        const data =
+            buffer.getChannelData(0);
+
+        for (
+            let i = 0;
+            i < tamanho;
+            i++
+        ) {
+
+            const t =
+                i / audio.sampleRate;
+
+            const textura =
+                Math.sin(t * 1900) * .35 +
+                Math.sin(t * 2700) * .20 +
+                Math.sin(t * 4100) * .10;
+
+            data[i] =
+                (Math.random() * 2 - 1) *
+                textura *
+                .22;
+        }
+
+        const ruido =
+            audio.createBufferSource();
+
+        ruido.buffer =
+            buffer;
+
+        ruido.connect(
+            ganho
+        );
+
+        ruido.start(inicio);
+
+        ruido.stop(
+            inicio + duracao
+        );
+
+        setTimeout(() => {
+            audio.close();
+        }, 3000);
+
+    } catch (erro) {
+
+        console.log(
+            "Áudio indisponível."
+        );
+
+    }
+}
+
+
+/* =========================
+   FINALIZAÇÃO
+========================= */
+
 function enviarWhatsApp() {
 
     if (processando) {
         return;
     }
 
-    const nome = document
-        .getElementById("nome")
-        .value
-        .trim();
+    const nome =
+        campoNome.value
+            .trim()
+            .replace(/\s+/g, " ");
 
-    const ok = document
-        .getElementById("ok")
-        .checked;
+    const ok =
+        document
+            .getElementById("ok")
+            .checked;
 
-    const botao = document.getElementById("btnAceitar");
-    const successScreen = document.getElementById("successScreen");
-    const protocolText = document.getElementById("protocolText");
+    const botao =
+        document.getElementById(
+            "btnAceitar"
+        );
 
-    if (!nome || !ok) {
+    const success =
+        document.getElementById(
+            "successScreen"
+        );
+
+    const protocol =
+        document.getElementById(
+            "protocolText"
+        );
+
+    const assinatura =
+        document.getElementById(
+            "assinaturaCliente"
+        );
+
+    const nomeAssinatura =
+        document.getElementById(
+            "nomeAssinatura"
+        );
+
+    const status =
+        document.getElementById(
+            "statusCliente"
+        );
+
+
+    /* VALIDAR NOME */
+
+    if (!validarNome(nome)) {
+
+        campoNome.classList.add(
+            "erro"
+        );
+
+        document.getElementById(
+            "validacaoMsg"
+        ).style.display =
+            "block";
+
+        campoNome.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        campoNome.focus();
+
+        return;
+    }
+
+
+    /* VALIDAR ACEITE */
+
+    if (!ok) {
 
         alert(
-            "Por favor, informe o nome completo e aceite os termos do contrato."
+            "Para continuar, você precisa ler e aceitar os termos do contrato."
         );
 
         return;
     }
 
+
     processando = true;
+
+
+    /* PROTOCOLO */
 
     const protocolo =
         Math.floor(
-            100000 + Math.random() * 900000
+            100000 +
+            Math.random() * 900000
         );
 
-    const agora = new Date();
+
+    /* DATA E HORA */
+
+    const agora =
+        new Date();
 
     const data =
-        agora.toLocaleDateString("pt-BR");
+        agora.toLocaleDateString(
+            "pt-BR"
+        );
 
     const hora =
-        agora.toLocaleTimeString("pt-BR");
+        agora.toLocaleTimeString(
+            "pt-BR"
+        );
 
-    botao.disabled = true;
-    botao.innerHTML = "✓ CONTRATO ACEITO — ENVIANDO...";
 
-    protocolText.textContent =
-        "Protocolo: " + protocolo;
+    /* BOTÃO */
 
-    successScreen.style.display = "block";
+    botao.disabled =
+        true;
+
+    botao.innerHTML =
+        "✎ REGISTRANDO ASSINATURA...";
+
+
+    /* =========================
+       ASSINATURA DO CLIENTE
+       EM MINÚSCULAS
+    ========================= */
+
+    const assinaturaMinuscula =
+        nome.toLocaleLowerCase("pt-BR");
+
+    assinatura.textContent =
+        assinaturaMinuscula;
+
+    /* Nome abaixo continua em MAIÚSCULO */
+
+    nomeAssinatura.textContent =
+        nome.toLocaleUpperCase("pt-BR");
+
+    status.textContent =
+        "Registrando assinatura...";
+
+
+    /* SOM DE LÁPIS */
+
+    tocarSomLapiz();
+
+
+    /* ANIMAÇÃO DA ASSINATURA */
+
+    assinatura.classList.remove(
+        "escrevendo"
+    );
+
+    void assinatura.offsetWidth;
+
+    assinatura.classList.add(
+        "escrevendo"
+    );
+
+
+    /* STATUS */
+
+    setTimeout(() => {
+
+        status.textContent =
+            "✓ Assinatura registrada";
+
+        status.classList.add(
+            "confirmado"
+        );
+
+    }, 2200);
+
+
+    /* PROTOCOLO */
+
+    protocol.textContent =
+        "Protocolo: " +
+        protocolo;
+
+
+    /* CONTRATO FINALIZADO */
+
+    setTimeout(() => {
+
+        botao.innerHTML =
+            "✓ CONTRATO FINALIZADO";
+
+        success.style.display =
+            "block";
+
+        success.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 2700);
+
+
+    /* MENSAGEM WHATSAPP */
 
     const mensagem =
 `*CONTRATO DE COMPRA FORMALIZADO*
@@ -806,18 +1686,27 @@ function enviarWhatsApp() {
 
 O cliente declarou estar ciente, ter lido e compreendido as condições apresentadas no contrato e concordou com os termos da operação.
 
+*ASSINATURA DIGITAL:* REGISTRADA
+
 *STATUS DA OPERAÇÃO:* CONCLUSÃO PENDENTE`;
+
+
+    /* 4,5 SEGUNDOS */
 
     setTimeout(() => {
 
         window.location.href =
             "https://wa.me/5511948559200?text=" +
-            encodeURIComponent(mensagem);
+            encodeURIComponent(
+                mensagem
+            );
 
-    }, 1200);
+    }, 4500);
+
 }
 
 </script>
 
 </body>
 </html>
+```
