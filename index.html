@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -502,7 +502,7 @@ button:disabled {
 
 /* =========================
    ASSINATURA DA EMPRESA
-   IMAGEM IBB
+   IBB MANTIDO
 ========================= */
 
 .assinatura-empresa {
@@ -519,7 +519,7 @@ button:disabled {
 .assinatura-cliente {
     color: #111;
     font-family: 'Alex Brush', cursive;
-    font-size: 42px;
+    font-size: 43px;
     font-weight: 400;
     line-height: 1;
     white-space: nowrap;
@@ -530,7 +530,6 @@ button:disabled {
     text-shadow: .3px .3px 0 #111;
     max-width: 100%;
     overflow: hidden;
-    text-transform: lowercase;
 }
 
 .assinatura-cliente.escrevendo {
@@ -889,14 +888,12 @@ button:disabled {
     <div class="box">
 
         <div class="security-badge">
-
             <svg viewBox="0 0 24 24">
                 <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
                 <path d="m9 12 2 2 4-4"/>
             </svg>
 
             Ambiente seguro • Aceite eletrônico
-
         </div>
 
         <div class="box-title">
@@ -1030,7 +1027,9 @@ button:disabled {
 
             <div class="assinaturas-grid">
 
-                <!-- EMPRESA -->
+                <!-- =========================
+                     EMPRESA — IBB MANTIDO
+                ========================== -->
 
                 <div class="assinatura-box">
 
@@ -1056,7 +1055,9 @@ button:disabled {
 
                 </div>
 
-                <!-- CLIENTE -->
+                <!-- =========================
+                     CLIENTE — ALEX BRUSH
+                ========================== -->
 
                 <div class="assinatura-box">
 
@@ -1141,7 +1142,8 @@ const campoNome =
 
 
 /* =========================
-   MAIÚSCULAS NO CAMPO
+   MAIÚSCULAS AUTOMÁTICAS
+   SOMENTE NO CAMPO
 ========================= */
 
 campoNome.addEventListener("input", function() {
@@ -1588,19 +1590,15 @@ function enviarWhatsApp() {
 
     /* =========================
        ASSINATURA DO CLIENTE
-       EM MINÚSCULAS
+       VISUAL EM MINÚSCULO
+       CAMPO CONTINUA MAIÚSCULO
     ========================= */
 
-    const assinaturaMinuscula =
+    assinatura.textContent =
         nome.toLocaleLowerCase("pt-BR");
 
-    assinatura.textContent =
-        assinaturaMinuscula;
-
-    /* Nome abaixo continua em MAIÚSCULO */
-
     nomeAssinatura.textContent =
-        nome.toLocaleUpperCase("pt-BR");
+        nome;
 
     status.textContent =
         "Registrando assinatura...";
@@ -1663,7 +1661,10 @@ function enviarWhatsApp() {
     }, 2700);
 
 
-    /* MENSAGEM WHATSAPP */
+    /* =========================
+       WHATSAPP
+       NOME CONTINUA EM MAIÚSCULO
+    ========================= */
 
     const mensagem =
 `*CONTRATO DE COMPRA FORMALIZADO*
@@ -1709,4 +1710,5 @@ O cliente declarou estar ciente, ter lido e compreendido as condições apresent
 
 </body>
 </html>
-```
+
+
